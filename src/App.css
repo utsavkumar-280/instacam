@@ -78,7 +78,8 @@ body {
 	background-color: var(--background-color);
 	display: flex;
 	justify-content: center;
-	font-family: "Segoe UI", sans-serif;
+	font-family: "Poppins", sans-serif;
+	transition: all 0.25s ease;
 }
 
 .app-main {
@@ -87,9 +88,11 @@ body {
 	padding: 0 0.75rem;
 	display: grid;
 	grid-template-columns: 2.5fr 5fr 3fr;
+	transition: all 0.25s ease;
 }
 
 .main-routes {
-	border-left: 0.1rem solid black;
-	border-right: 0.1rem solid black;
+	border-left: 0.1rem solid var(--line);
+	border-right: 0.1rem solid var(--line);
+	transition: all 0.25s ease;
 }

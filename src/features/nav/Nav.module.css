@@ -3,10 +3,28 @@
 	height: 100vh;
 	position: sticky;
 	top: 0;
-
 	z-index: 1;
+	transition: all 0.25s ease;
 }
 .head_container {
 	height: 6.5vh;
-	background-color: rgb(46, 43, 226);
+	background-color: var(--background-color);
+	transition: all 0.25s ease;
+	padding: 1rem 0 0.75rem 0;
+	border-bottom: 0.1rem solid var(--line);
+	display: flex;
+	align-items: flex-end;
+}
+.head_container > h1 {
+	font-size: 2.5rem;
+	font-weight: 800;
+	letter-spacing: 0.05rem;
+	color: var(--primary-color);
+	transition: all 0.25s ease;
+}
+.link_container {
+	height: 87vh;
+}
+.footer_container {
+	height: 6.5vh;
 }

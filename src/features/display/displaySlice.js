@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const displaySlice = createSlice({
 	name: "display",
 	initialState: {
-		primaryColor: "blue",
+		primaryColor: "prBlue",
 		theme: "default",
 	},
 	reducers: {
