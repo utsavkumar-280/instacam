@@ -1,0 +1,12 @@
+.container {
+	background-color: var(--background-color);
+	height: 100vh;
+	position: sticky;
+	top: 0;
+
+	z-index: 1;
+}
+.head_container {
+	height: 6.5vh;
+	background-color: rgb(46, 43, 226);
+}

@@ -1,0 +1,26 @@
+.container {
+	background-color: var(--background-color);
+	min-height: 100vh;
+	/* border-left: 0.1rem solid black;
+	border-right: 0.1rem solid black; */
+}
+
+.head_container {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	height: 6.5vh;
+	padding: 2rem 1.5rem 1rem 1.5rem;
+	background-color: rgb(0, 255, 149);
+	border-bottom: 0.1rem solid black;
+}
+
+.addpost {
+	height: 20vh;
+	background-color: rgb(0, 204, 255);
+}
+
+.postList {
+	height: 170vh;
+	background-color: rgb(238, 255, 0);
+}

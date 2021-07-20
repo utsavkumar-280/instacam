@@ -1,0 +1,11 @@
+.container {
+	background-color: rgb(43, 226, 58);
+}
+.head_container {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	height: 6.5vh;
+	padding: 2rem 1.5rem 1rem 1.5rem;
+	background-color: rgb(226, 70, 43);
+}
