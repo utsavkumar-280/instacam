@@ -1,9 +1,8 @@
-import { useState } from "react";
 // import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { GrCheckmark } from "react-icons/gr";
 import { FaCheck } from "react-icons/fa";
-
+import { ImRadioUnchecked, ImRadioChecked } from "react-icons/im";
+import { primaryColor, mainTheme } from "./util/data";
 import {
 	toggleTheme,
 	togglePrimary,
@@ -18,111 +17,57 @@ export const Display = () => {
 	const theme = useThemeSelector();
 	console.log({ primary, theme });
 	return (
-		<div>
+		<div className={displayStyles.container}>
 			<header className={displayStyles.head_container}>
 				<p className={displayStyles.route_head}>Customize your Display</p>
 			</header>
-			<div className={displayStyles.content_container}>
+			<section className={displayStyles.content_container}>
 				<h2>Color</h2>
 				<section className={displayStyles.primaryToggler}>
-					<button
-						onClick={() => dispatch(togglePrimary("prBlue"))}
-						className={displayStyles.primaryColor}
-						style={{ backgroundColor: "#1da1f2", color: "var(--head-primary)" }}
-					>
-						{primary === "prBlue" ? (
-							<FaCheck className={displayStyles.check_icon} />
-						) : (
-							<FaCheck
-								style={{ color: "#1da1f2" }}
-								className={displayStyles.check_icon}
-							/>
-						)}
-					</button>
-					<button
-						onClick={() => dispatch(togglePrimary("prYellow"))}
-						className={displayStyles.primaryColor}
-						style={{ backgroundColor: "#ffad1f", color: "var(--head-primary)" }}
-					>
-						{primary === "prYellow" ? (
-							<FaCheck className={displayStyles.check_icon} />
-						) : (
-							<FaCheck
-								style={{ color: "#ffad1f" }}
-								className={displayStyles.check_icon}
-							/>
-						)}
-					</button>
-					<button
-						onClick={() => dispatch(togglePrimary("prPink"))}
-						className={displayStyles.primaryColor}
-						style={{ backgroundColor: "#e0245e", color: "var(--head-primary)" }}
-					>
-						{primary === "prPink" ? (
-							<FaCheck className={displayStyles.check_icon} />
-						) : (
-							<FaCheck
-								style={{ color: "#e0245e" }}
-								className={displayStyles.check_icon}
-							/>
-						)}
-					</button>
-					<button
-						onClick={() => dispatch(togglePrimary("prOrange"))}
-						className={displayStyles.primaryColor}
-						style={{ backgroundColor: "#f45d22", color: "var(--head-primary)" }}
-					>
-						{primary === "prOrange" ? (
-							<FaCheck className={displayStyles.check_icon} />
-						) : (
-							<FaCheck
-								style={{ color: "#f45d22" }}
-								className={displayStyles.check_icon}
-							/>
-						)}
-					</button>
-					<button
-						onClick={() => dispatch(togglePrimary("prPurple"))}
-						className={displayStyles.primaryColor}
-						style={{ backgroundColor: "#794bc4", color: "var(--head-primary)" }}
-					>
-						{primary === "prPurple" ? (
-							<FaCheck className={displayStyles.check_icon} />
-						) : (
-							<FaCheck
-								style={{ color: "#794bc4" }}
-								className={displayStyles.check_icon}
-							/>
-						)}
-					</button>
-					<button
-						onClick={() => dispatch(togglePrimary("prGreen"))}
-						className={displayStyles.primaryColor}
-						style={{ backgroundColor: "#17bf63", color: "var(--head-primary)" }}
-					>
-						{primary === "prGreen" ? (
-							<FaCheck className={displayStyles.check_icon} />
-						) : (
-							<FaCheck
-								style={{ color: "#17bf63" }}
-								className={displayStyles.check_icon}
-							/>
-						)}
-					</button>
+					{primaryColor.map((prColor, id) => (
+						<button
+							key={id}
+							onClick={() => dispatch(togglePrimary(prColor.class))}
+							className={displayStyles.primaryColor}
+							style={{
+								backgroundColor: prColor.color,
+							}}
+						>
+							{primary === prColor.class ? (
+								<FaCheck className={displayStyles.check_icon} />
+							) : (
+								<FaCheck
+									style={{ color: prColor.color }}
+									className={displayStyles.check_icon}
+								/>
+							)}
+						</button>
+					))}
 				</section>
 				<h2>Theme</h2>
 				<section className={displayStyles.themeToggler}>
-					<button onClick={() => dispatch(toggleTheme("default"))}>
-						{" "}
-						Default
-					</button>
-					<button onClick={() => dispatch(toggleTheme("dim"))}> Dim</button>
-					<button onClick={() => dispatch(toggleTheme("lightsOut"))}>
-						{" "}
-						Lights Out
-					</button>
+					{mainTheme.map((newtheme, id) => (
+						<button
+							key={id}
+							className={
+								theme === newtheme.class
+									? ` ${displayStyles[newtheme.theme]} ${
+											displayStyles.theme_active
+									  }`
+									: displayStyles[newtheme.theme]
+							}
+							onClick={() => dispatch(toggleTheme(newtheme.class))}
+						>
+							{theme === newtheme.class ? (
+								<ImRadioChecked className={displayStyles.theme_icon_active} />
+							) : (
+								<ImRadioUnchecked className={displayStyles.theme_icon} />
+							)}
+							{newtheme.name}
+						</button>
+					))}
 				</section>
-			</div>
+			</section>
 		</div>
 	);
 };
