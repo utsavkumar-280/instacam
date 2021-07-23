@@ -17,6 +17,7 @@ import {
 	Explore,
 	Home,
 	Display,
+	Notification,
 } from "./features";
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
 							element={<Profile />}
 						/>
 						<PrivateRoute path="/display" element={<Display />} />
+						<PrivateRoute path="/notification" element={<Notification />} />
 					</Routes>
 				</div>
 				<Explore />
