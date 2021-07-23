@@ -1,22 +1,16 @@
 import homeStyles from "./Home.module.css";
+import { AddPost } from "./AddPost";
+import { PostList } from "./PostList";
 
 export const Home = () => {
 	return (
 		<div className={homeStyles.container}>
 			<header className={homeStyles.head_container}>
-				<h1>Hello this is Home.</h1>
+				<p className={homeStyles.route_head}>Home</p>
 			</header>
+			<AddPost />
 
-			<section className={homeStyles.addpost}>
-				<h1>Add post</h1>
-			</section>
-
-			<section className={homeStyles.postList}>
-				<h1>Hello this is Home.</h1>
-				<h1>Hello this is Home.</h1>
-				<h1>Hello this is Home.</h1>
-				<h1>Hello this is Home.</h1>
-			</section>
+			<PostList />
 		</div>
 	);
 };
