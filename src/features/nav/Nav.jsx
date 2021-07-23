@@ -22,7 +22,7 @@ export const Nav = () => {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/" className={navStyles.links}>
+						<NavLink to="/notification" className={navStyles.links}>
 							<FaRegBell className={navStyles.link_icon} />
 							Notification
 						</NavLink>
@@ -41,7 +41,7 @@ export const Nav = () => {
 					</li>
 					<li>
 						<button className={navStyles.link_logout_cta}>
-							<NavLink to="/display">Logout</NavLink>
+							<NavLink to="/">Logout</NavLink>
 						</button>
 					</li>
 				</ul>

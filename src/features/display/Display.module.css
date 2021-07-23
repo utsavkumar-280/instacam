@@ -13,6 +13,13 @@
 	display: flex;
 	align-items: flex-end;
 }
+.route_head {
+	font-size: 2.25rem;
+	font-weight: 700;
+	letter-spacing: 0.025rem;
+	color: var(--head-primary);
+	transition: all 0.25s ease;
+}
 .content_container {
 	height: 93.5vh;
 	padding: 2rem;
@@ -21,13 +28,6 @@
 .content_container > h2 {
 	font-size: 1.45rem;
 	color: var(--head-secondary);
-	transition: all 0.25s ease;
-}
-.route_head {
-	font-size: 2.25rem;
-	font-weight: 700;
-	letter-spacing: 0.025rem;
-	color: var(--head-primary);
 	transition: all 0.25s ease;
 }
 
@@ -54,6 +54,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 }
 .check_icon {
 	color: #ffffff;
@@ -71,7 +72,7 @@
 	padding: 1.5rem;
 	background-color: var(--background-card);
 	border-radius: 2rem;
-	height: 10vh;
+	min-height: 10vh;
 	margin: 0.75rem 0 2rem 0;
 	transition: all 0.25s ease;
 	display: grid;
@@ -90,6 +91,7 @@
 	font-weight: 600;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 	transition: all 0.25s ease;
 }
 
@@ -104,6 +106,7 @@
 	font-weight: 500;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 	transition: all 0.25s ease;
 }
 .themeLightsOut {
@@ -117,6 +120,7 @@
 	font-weight: 500;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 	transition: all 0.25s ease;
 }
 .theme_active {
