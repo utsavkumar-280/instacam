@@ -57,31 +57,37 @@ body {
 	--primary-color: #1da1f2;
 	--primary-cta-hover: #39aef7;
 	--primary-hover: rgba(29, 160, 242, 0.1);
+	--primary-disabled: rgba(29, 160, 242, 0.5);
 }
 .prYellow {
 	--primary-color: #ffad1f;
 	--primary-cta-hover: #fdbb4a;
 	--primary-hover: rgba(255, 173, 31, 0.1);
+	--primary-disabled: rgba(255, 173, 31, 0.5);
 }
 .prPink {
 	--primary-color: #e0245e;
 	--primary-cta-hover: #ec4e80;
 	--primary-hover: rgba(224, 36, 96, 0.1);
+	--primary-disabled: rgba(224, 36, 96, 0.5);
 }
 .prOrange {
 	--primary-color: #f45d22;
 	--primary-cta-hover: #f77846;
 	--primary-hover: rgba(244, 93, 34, 0.1);
+	--primary-disabled: rgba(244, 93, 34, 0.5);
 }
 .prPurple {
 	--primary-color: #794bc4;
 	--primary-cta-hover: #8a5fcf;
 	--primary-hover: rgba(121, 75, 196, 0.1);
+	--primary-disabled: rgba(121, 75, 196, 0.5);
 }
 .prGreen {
 	--primary-color: #17bf63;
 	--primary-cta-hover: #30d67b;
 	--primary-hover: rgba(23, 191, 99, 0.1);
+	--primary-disabled: rgba(23, 191, 99, 0.5);
 }
 
 .app-container {
@@ -95,7 +101,7 @@ body {
 }
 
 .app-main {
-	width: 65vw;
+	width: 67.5vw;
 	background-color: var(--background-color);
 	padding: 0 0.75rem;
 	display: grid;
