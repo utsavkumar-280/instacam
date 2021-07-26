@@ -16,27 +16,58 @@ export const Nav = () => {
 			<nav className={navStyles.link_container}>
 				<ul className={navStyles.link_list}>
 					<li>
-						<NavLink to="/" className={navStyles.links}>
+						<NavLink
+							to="/"
+							end
+							className={navStyles.links}
+							activeClassName={navStyles.links_active}
+						>
 							<AiFillHome className={navStyles.link_icon} />
 							Home
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/notification" className={navStyles.links}>
+						<NavLink
+							to="/notification"
+							end
+							className={navStyles.links}
+							activeClassName={navStyles.links_active}
+						>
 							<FaRegBell className={navStyles.link_icon} />
 							Notification
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/user-profile" className={navStyles.links}>
+						<NavLink
+							to="/user-profile/Utsav"
+							end
+							className={navStyles.links}
+							activeClassName={navStyles.links_active}
+						>
 							<FaUserAlt className={navStyles.link_icon} />
 							Profile
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/display" className={navStyles.links}>
+						<NavLink
+							to="/display"
+							end
+							className={navStyles.links}
+							activeClassName={navStyles.links_active}
+						>
 							<FiEdit className={navStyles.link_icon} />
 							Display
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							to="/login"
+							end
+							className={navStyles.links}
+							activeClassName={navStyles.links_active}
+						>
+							<FiEdit className={navStyles.link_icon} />
+							Login
 						</NavLink>
 					</li>
 					<li>

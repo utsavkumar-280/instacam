@@ -76,6 +76,10 @@
 	text-decoration: none;
 	cursor: pointer;
 }
+.links_active {
+	color: var(--primary-color);
+	transition: all 0.25s ease;
+}
 
 .link_icon {
 	margin-right: 1.5rem;
