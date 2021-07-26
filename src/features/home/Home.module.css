@@ -154,3 +154,11 @@
 	border-top: 0.1rem solid var(--line);
 	border-bottom: 0.1rem solid var(--line);
 }
+
+@media screen and (max-height: 740px) {
+	.head_container {
+		height: 10vh;
+		display: flex;
+		align-items: center;
+	}
+}

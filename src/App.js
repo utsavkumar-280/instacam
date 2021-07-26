@@ -11,9 +11,9 @@ import {
 	PrivateRoute,
 	Login,
 	Signup,
-	ForgotPass,
 	Profile,
 	Nav,
+	PhoneNav,
 	Explore,
 	Home,
 	Display,
@@ -27,12 +27,14 @@ function App() {
 	return (
 		<div className={`app-container ${primary} ${theme}`}>
 			<div className="app-main">
-				<Nav />
+				<div className="nav-container">
+					<Nav />
+				</div>
+
 				<div className="main-routes">
 					<Routes>
 						<AuthRoute path="/login" element={<Login />} />
 						<AuthRoute path="/signup" element={<Signup />} />
-						<AuthRoute path="/forgot-pass" element={<ForgotPass />} />
 
 						<PrivateRoute path="/" element={<Home />} />
 						<PrivateRoute
@@ -40,10 +42,14 @@ function App() {
 							element={<Profile />}
 						/>
 						<PrivateRoute path="/display" element={<Display />} />
+						<PrivateRoute path="/search" element={<Explore />} />
 						<PrivateRoute path="/notification" element={<Notification />} />
 					</Routes>
 				</div>
-				<Explore />
+				<div className="explore-container">
+					<Explore />
+				</div>
+				<PhoneNav />
 			</div>
 		</div>
 	);

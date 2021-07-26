@@ -24,3 +24,16 @@
 	color: var(--head-primary);
 	transition: all 0.25s ease;
 }
+
+@media screen and (max-height: 975px) {
+	.head_container {
+		height: 7.5vh;
+		display: flex;
+		align-items: center;
+	}
+}
+@media screen and (max-height: 740px) {
+	.head_container {
+		height: 10vh;
+	}
+}

@@ -105,12 +105,50 @@ body {
 	background-color: var(--background-color);
 	padding: 0 0.75rem;
 	display: grid;
-	grid-template-columns: 2fr 5fr 3fr;
+	grid-template-columns: 2.25fr 4.75fr 3fr;
+	grid-template-areas: "nav-area main-area explore-area";
 	transition: all 0.25s ease;
 }
-
+.nav-container {
+	grid-area: nav-area;
+}
 .main-routes {
 	border-left: 0.1rem solid var(--line);
 	border-right: 0.1rem solid var(--line);
 	transition: all 0.25s ease;
+	grid-area: main-area;
+}
+.explore-container {
+	grid-area: explore-area;
+}
+
+@media screen and (max-width: 1380px) {
+	.app-main {
+		width: 85%;
+	}
+}
+
+@media screen and (max-width: 1240px) {
+	.app-main {
+		width: 95%;
+	}
+}
+@media screen and (max-width: 980px) {
+	.app-main {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 880px) {
+	.app-main {
+		width: 100%;
+		padding: 0;
+		grid-template-areas: "main-area main-area main-area";
+	}
+	.nav-container {
+		display: none;
+	}
+	.explore-container {
+		display: none;
+	}
 }

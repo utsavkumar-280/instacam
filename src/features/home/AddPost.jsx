@@ -24,7 +24,7 @@ export const AddPost = () => {
 						<button
 							type="button"
 							className={homeStyles.form_cta}
-							disabled={true}
+							disabled={false}
 						>
 							Post
 						</button>

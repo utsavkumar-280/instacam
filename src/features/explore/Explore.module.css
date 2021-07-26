@@ -123,3 +123,19 @@
 	color: var(--head-secondary);
 	transition: all 0.25s ease;
 }
+
+@media screen and (max-height: 975px) {
+	.head_container {
+		height: 7.5vh;
+		padding: 0.75rem 2rem;
+	}
+	.search_container {
+		height: 100%;
+	}
+}
+@media screen and (max-height: 740px) {
+	.head_container {
+		height: 10vh;
+		padding: 1rem 2rem;
+	}
+}

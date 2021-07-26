@@ -144,3 +144,29 @@
 	margin-right: 1rem;
 	transition: all 0.25s ease;
 }
+
+@media screen and (max-height: 975px) {
+	.head_container {
+		height: 7.5vh;
+		display: flex;
+		align-items: center;
+	}
+}
+
+@media screen and (max-height: 740px) {
+	.head_container {
+		height: 10vh;
+	}
+	.content_container {
+		height: 90vh;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.themeToggler {
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-rows: repeat(3, 1fr);
+		grid-gap: 1.5rem;
+	}
+}
