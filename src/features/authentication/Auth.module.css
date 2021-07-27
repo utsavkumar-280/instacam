@@ -1,10 +1,10 @@
 .container {
 	position: fixed;
-	z-index: 5;
+	z-index: 6;
 	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 100vh;
+	min-height: 100vh;
 	font-family: "Poppins", sans-serif;
 	background-color: var(--background-color);
 	color: var(--head-primary);
@@ -23,8 +23,6 @@
 	transition: all 0.25s ease;
 	border-radius: 3rem;
 	border: 0.1rem solid var(--line);
-	/* box-shadow: rgb(0 0 0 / 10%) 0px 10px 15px -3px,
-		rgb(0 0 0 / 5%) 0px 4px 6px -2px; */
 }
 .form_head {
 	font-size: 3.5rem;
@@ -160,7 +158,7 @@
 	cursor: pointer;
 	padding: 1.75rem;
 	border-radius: 3rem;
-	margin: 2.5rem 0rem 2.5rem 0rem;
+	margin: 2.5rem 0rem;
 	background-color: var(--primary-color);
 	transition: all 0.25s ease;
 	color: white;
@@ -224,5 +222,37 @@ select:-webkit-autofill:focus {
 	.form_field_container {
 		width: auto;
 		padding: 0 1rem 1rem 1rem;
+	}
+}
+
+@media screen and (max-width: 880px) {
+	.content_card {
+		padding: 0 0.5rem;
+		border: none;
+	}
+	.input_control {
+		margin: 0;
+	}
+	.form_head {
+		padding: 0.5rem 0;
+	}
+	.form_submit_cta {
+		margin: 1.5rem 0 1rem 0;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.container {
+		display: flex;
+		align-items: flex-start;
+	}
+	.input_field_container {
+		margin: 0;
+	}
+	.form_submit_cta {
+		padding: 1rem 1.75rem;
+	}
+	.form_text {
+		margin: 0;
 	}
 }

@@ -124,7 +124,7 @@
 	transition: all 0.25s ease;
 }
 
-@media screen and (max-height: 975px) {
+@media screen and (max-height: 940px) {
 	.head_container {
 		height: 7.5vh;
 		padding: 0.75rem 2rem;
