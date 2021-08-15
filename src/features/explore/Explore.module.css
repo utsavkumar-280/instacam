@@ -1,7 +1,7 @@
 .container {
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
-	min-height: 105vh;
+	min-height: 100vh;
 }
 .head_container {
 	position: sticky;
