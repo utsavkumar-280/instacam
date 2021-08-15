@@ -34,7 +34,7 @@ export const Nav = () => {
 							activeClassName={navStyles.links_active}
 						>
 							<FaRegBell className={navStyles.link_icon} />
-							Notification
+							Notifications
 						</NavLink>
 					</li>
 					<li>

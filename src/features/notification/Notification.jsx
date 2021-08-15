@@ -4,7 +4,7 @@ export const Notification = () => {
 	return (
 		<div className={notifyStyles.container}>
 			<header className={notifyStyles.head_container}>
-				<p className={notifyStyles.route_head}>Notification</p>
+				<p className={notifyStyles.route_head}>Notifications</p>
 			</header>
 		</div>
 	);
