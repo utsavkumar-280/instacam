@@ -1,7 +1,10 @@
-import homeStyles from "./Home.module.css";
-import { IoImageOutline } from "react-icons/io5";
+import { useState } from "react";
+import homeStyles from "../Home.module.css";
+import { ImageUploader } from "./ImageUploader";
+import { IoImageOutline, IoCloudUpload } from "react-icons/io5";
 
 export const AddPost = () => {
+	const [imgDrop, setImgDrop] = useState(false);
 	return (
 		<div className={homeStyles.add_post}>
 			<section className={homeStyles.post_layout}>
@@ -15,10 +18,14 @@ export const AddPost = () => {
 				<form className={homeStyles.form_conatiner}>
 					<section className={homeStyles.form_input}>
 						<textarea placeholder="What's Happening?" />
-						{/* <input type="file" name="" id="" /> */}
+						<ImageUploader imgDrop={imgDrop} setImgDrop={setImgDrop} />
 					</section>
 					<section className={homeStyles.form_cta_container}>
-						<button type="button" className={homeStyles.form_upload}>
+						<button
+							type="button"
+							className={homeStyles.form_upload}
+							onClick={() => setImgDrop((prev) => !prev)}
+						>
 							<IoImageOutline className={homeStyles.form_upload_cta} />
 						</button>
 						<button
