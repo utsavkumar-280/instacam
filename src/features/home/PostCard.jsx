@@ -1,17 +1,23 @@
 import homeStyles from "./Home.module.css";
 import { GoHeart } from "react-icons/go";
+import { IoHeartOutline } from "react-icons/io5";
 
 export const PostCard = () => {
 	return (
 		<div className={homeStyles.main_post}>
-			<div className={homeStyles.post_layout}>
-				<section className={homeStyles.likes_container}>
-					<div className={homeStyles.likes_content}>
-						<GoHeart className={homeStyles.likes} />
-					</div>
-				</section>
-				<section className={homeStyles.post_content}>Liked by 2 people</section>
-			</div>
+			{true && (
+				<div className={homeStyles.post_layout}>
+					<section className={homeStyles.likes_container}>
+						<div className={homeStyles.likes_content}>
+							<GoHeart className={homeStyles.likes} />
+						</div>
+					</section>
+					<section className={homeStyles.post_content}>
+						Liked by 2 people
+					</section>
+				</div>
+			)}
+
 			<div className={homeStyles.post_layout}>
 				<section
 					className={`${homeStyles.user_pic_container} ${homeStyles.user_pfp_padding}`}
@@ -41,8 +47,11 @@ export const PostCard = () => {
 							/>
 						</section>
 					)}
-					<section className={homeStyles.post_cta}>
-						<button>add</button>
+					<section className={homeStyles.post_cta_container}>
+						<button className={homeStyles.post_cta}>
+							<IoHeartOutline />
+						</button>
+						<div>15</div>
 					</section>
 				</section>
 			</div>

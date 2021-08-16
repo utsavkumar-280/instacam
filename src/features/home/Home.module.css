@@ -31,13 +31,12 @@
 	position: sticky;
 	top: 6.5vh;
 	z-index: 1;
-	/* min-height: 20vh; */
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
 }
 
+/* PostList */
 .postList {
-	/* height: 170vh; */
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
 	display: flex;
@@ -78,12 +77,14 @@
 .user_pfp_padding {
 	padding: 0 0 1rem 1rem;
 	color: var(--head-primary);
+	transition: all 0.25s ease;
 }
 .post_box {
 	padding: 0 0 1rem 1rem;
 	color: var(--head-primary);
 	display: flex;
 	flex-direction: column;
+	transition: all 0.25s ease;
 }
 .user_pic {
 	width: 5rem;
@@ -97,17 +98,20 @@
 	font-size: 1.25rem;
 	font-weight: 500;
 	letter-spacing: 0.02rem;
+	transition: all 0.25s ease;
 }
 .post_head {
 	font-size: 1.625rem;
 	font-weight: 600;
 	letter-spacing: 0.03rem;
 	color: var(--head-primary);
+	transition: all 0.25s ease;
 }
 .post_head > span {
 	font-size: 1.325rem;
 	font-weight: 500;
 	color: var(--head-secondary);
+	transition: all 0.25s ease;
 }
 .post_description {
 	font-size: 1.4rem;
@@ -115,10 +119,43 @@
 	letter-spacing: 0.03rem;
 	color: var(--head-primary);
 	margin: 0.5rem 1rem 1rem 0;
+	transition: all 0.25s ease;
+}
+.post_cta_container {
+	margin: 0 0 1rem 0;
+	display: flex;
+	align-items: center;
 }
 .post_cta {
-	margin: 1.5rem 0 1rem 0;
+	background-color: transparent;
+	font-size: 2rem;
+	color: var(--head-secondary);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	padding: 0.5rem;
+	cursor: pointer;
+	transition: all 0.25s ease;
 }
+.post_cta:hover {
+	background-color: var(--primary-hover);
+	font-size: 2rem;
+	color: var(--primary-color);
+	transition: all 0.25s ease;
+}
+.post_cta:hover + div {
+	background-color: transparent;
+	color: var(--primary-color);
+	transition: all 0.25s ease;
+}
+.post_cta + div {
+	background-color: transparent;
+	color: var(--head-secondary);
+	font-size: 1.4rem;
+	transition: all 0.25s ease;
+}
+
 .post_pic {
 	border-radius: 1.25rem;
 	width: 100%;
