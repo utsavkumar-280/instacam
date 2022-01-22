@@ -123,6 +123,39 @@ export const Explore = () => {
 									<h2>@utsavkumar280</h2>
 								</section>
 							</Link>
+							<Link to="/user-profile" className={exploreStyles.users}>
+								<img
+									src="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
+									alt="post_user_pic"
+									className={exploreStyles.users_pic}
+								/>
+								<section className={exploreStyles.users_info}>
+									<h1>Utsav Kumar</h1>
+									<h2>@utsavkumar280</h2>
+								</section>
+							</Link>
+							<Link to="/user-profile" className={exploreStyles.users}>
+								<img
+									src="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
+									alt="post_user_pic"
+									className={exploreStyles.users_pic}
+								/>
+								<section className={exploreStyles.users_info}>
+									<h1>Utsav Kumar</h1>
+									<h2>@utsavkumar280</h2>
+								</section>
+							</Link>
+							<Link to="/user-profile" className={exploreStyles.users}>
+								<img
+									src="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
+									alt="post_user_pic"
+									className={exploreStyles.users_pic}
+								/>
+								<section className={exploreStyles.users_info}>
+									<h1>Utsav Kumar</h1>
+									<h2>@utsavkumar280</h2>
+								</section>
+							</Link>
 						</section>
 					</div>
 				)}

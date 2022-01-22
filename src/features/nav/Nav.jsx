@@ -1,10 +1,23 @@
 import navStyles from "./Nav.module.css";
-import { NavLink, Link } from "react-router-dom";
-import { FiEdit } from "react-icons/fi";
-import { AiFillHome } from "react-icons/ai";
-import { FaUserAlt, FaRegBell } from "react-icons/fa";
+import { NavLink, Link, useLocation } from "react-router-dom";
+
+import {
+	HomeIcon,
+	BellIcon,
+	UserCircleIcon,
+	LightBulbIcon,
+	SearchIcon,
+} from "@heroicons/react/solid";
+import {
+	HomeIcon as HomeIconOutline,
+	BellIcon as BellIconOutline,
+	UserCircleIcon as UserCircleIconOutline,
+	LightBulbIcon as LightBulbIconOutline,
+	SearchIcon as SearchIconOutline,
+} from "@heroicons/react/outline";
 
 export const Nav = () => {
+	const currentPath = useLocation().pathname;
 	return (
 		<div className={navStyles.container}>
 			<header className={navStyles.head_container}>
@@ -22,7 +35,11 @@ export const Nav = () => {
 							className={navStyles.links}
 							activeClassName={navStyles.links_active}
 						>
-							<AiFillHome className={navStyles.link_icon} />
+							{currentPath === "/" ? (
+								<HomeIcon className={navStyles.link_icon} />
+							) : (
+								<HomeIconOutline className={navStyles.link_icon} />
+							)}
 							Home
 						</NavLink>
 					</li>
@@ -33,18 +50,41 @@ export const Nav = () => {
 							className={navStyles.links}
 							activeClassName={navStyles.links_active}
 						>
-							<FaRegBell className={navStyles.link_icon} />
+							{currentPath === "/notification" ? (
+								<BellIcon className={navStyles.link_icon} />
+							) : (
+								<BellIconOutline className={navStyles.link_icon} />
+							)}
 							Notifications
 						</NavLink>
 					</li>
-					<li>
+					<li className={navStyles.display_none}>
 						<NavLink
-							to="/user-profile/Utsav"
+							to="/search"
 							end
 							className={navStyles.links}
 							activeClassName={navStyles.links_active}
 						>
-							<FaUserAlt className={navStyles.link_icon} />
+							{currentPath === "/search" ? (
+								<SearchIcon className={navStyles.link_icon} />
+							) : (
+								<SearchIconOutline className={navStyles.link_icon} />
+							)}
+							Search
+						</NavLink>
+					</li>
+					<li>
+						<NavLink
+							to="/user-profile/utsav"
+							end
+							className={navStyles.links}
+							activeClassName={navStyles.links_active}
+						>
+							{currentPath === "/user-profile/utsav" ? (
+								<UserCircleIcon className={navStyles.link_icon} />
+							) : (
+								<UserCircleIconOutline className={navStyles.link_icon} />
+							)}
 							Profile
 						</NavLink>
 					</li>
@@ -55,21 +95,15 @@ export const Nav = () => {
 							className={navStyles.links}
 							activeClassName={navStyles.links_active}
 						>
-							<FiEdit className={navStyles.link_icon} />
+							{currentPath === "/display" ? (
+								<LightBulbIcon className={navStyles.link_icon} />
+							) : (
+								<LightBulbIconOutline className={navStyles.link_icon} />
+							)}
 							Display
 						</NavLink>
 					</li>
-					<li>
-						<NavLink
-							to="/login"
-							end
-							className={navStyles.links}
-							activeClassName={navStyles.links_active}
-						>
-							<FiEdit className={navStyles.link_icon} />
-							Login
-						</NavLink>
-					</li>
+
 					<li>
 						<button className={navStyles.link_logout_cta}>
 							<NavLink to="/">Logout</NavLink>
