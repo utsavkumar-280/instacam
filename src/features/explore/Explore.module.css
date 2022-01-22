@@ -56,27 +56,31 @@
 	transition: all 0.25s ease;
 }
 
-.suggested_section {
+.userList_section {
 	padding: 1rem 1.5rem;
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
 	min-height: 93.5vh;
 }
-.suggested_container {
+.userList_container {
 	background-color: var(--background-card);
-	/* min-height: 70vh; */
 	border-radius: 2rem;
-	padding: 1.5rem 0 2rem 0;
+	padding: 1.5rem 0 0 0;
+	transition: all 0.25s ease;
+}
+.userList_container_alt {
+	background-color: var(--background-card);
+	border-radius: 2rem;
+	padding: 0;
 	transition: all 0.25s ease;
 }
 
-.suggested_header {
+.userList_header {
 	padding: 0 2rem 1.5rem 2rem;
-	border-bottom: 0.1rem solid var(--line);
 	transition: all 0.25s ease;
 }
 
-.suggested_header > p {
+.userList_header > p {
 	font-size: 1.875rem;
 	font-weight: 700;
 	letter-spacing: 0.025rem;
@@ -87,6 +91,15 @@
 .users_list {
 	display: flex;
 	flex-direction: column;
+	border-top: 0.1rem solid var(--line);
+}
+.users_list_alt {
+	display: flex;
+	flex-direction: column;
+}
+
+.users:last-child {
+	border-bottom: 0.1rem solid transparent;
 }
 
 .users {
