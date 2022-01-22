@@ -305,10 +305,22 @@
 	font-weight: 500;
 	color: var(--head-secondary);
 }
-@media screen and (max-height: 740px) {
+@media screen and (max-width: 1024px) {
 	.head_container {
 		height: 10vh;
 		display: flex;
 		align-items: center;
+	}
+	.add_post {
+		position: sticky;
+		top: 10vh;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	.add_post {
+		position: static;
+		background-color: var(--background-color);
+		transition: all 0.25s ease;
 	}
 }

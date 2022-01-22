@@ -142,18 +142,17 @@ body {
 	}
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1024px) {
 	.app-main {
-		width: 95%;
+		display: grid;
+		grid-template-columns: 3.25fr 7fr;
 	}
-}
-@media screen and (max-width: 980px) {
-	.app-main {
-		width: 100%;
+	.explore-container {
+		display: none;
 	}
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 768px) {
 	.app-main {
 		width: 100%;
 		padding: 0;

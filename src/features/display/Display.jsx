@@ -25,23 +25,31 @@ export const Display = () => {
 				<h2>Color</h2>
 				<section className={displayStyles.primaryToggler}>
 					{primaryColor.map((prColor, id) => (
-						<button
-							key={id}
-							onClick={() => dispatch(togglePrimary(prColor.class))}
-							className={displayStyles.primaryColor}
+						<div
 							style={{
-								backgroundColor: prColor.color,
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
 							}}
 						>
-							{primary === prColor.class ? (
-								<FaCheck className={displayStyles.check_icon} />
-							) : (
-								<FaCheck
-									style={{ color: prColor.color }}
-									className={displayStyles.check_icon}
-								/>
-							)}
-						</button>
+							<button
+								key={id}
+								onClick={() => dispatch(togglePrimary(prColor.class))}
+								className={displayStyles.primaryColor}
+								style={{
+									backgroundColor: prColor.color,
+								}}
+							>
+								{primary === prColor.class ? (
+									<FaCheck className={displayStyles.check_icon} />
+								) : (
+									<FaCheck
+										style={{ color: prColor.color }}
+										className={displayStyles.check_icon}
+									/>
+								)}
+							</button>
+						</div>
 					))}
 				</section>
 				<h2>Theme</h2>
