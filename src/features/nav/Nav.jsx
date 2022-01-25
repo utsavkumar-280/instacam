@@ -106,7 +106,7 @@ export const Nav = () => {
 
 					<li>
 						<button className={navStyles.link_logout_cta}>
-							<NavLink to="/">Logout</NavLink>
+							<NavLink to="/login">Logout</NavLink>
 						</button>
 					</li>
 				</ul>
