@@ -99,7 +99,7 @@ body {
 }
 
 .app-main {
-	width: 67.5vw;
+	width: 67.5%;
 	background-color: var(--background-color);
 	padding: 0 0.75rem;
 	display: grid;
@@ -135,10 +135,21 @@ body {
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
 }
+@media screen and (max-width: 1540px) {
+	.app-main {
+		width: 80%;
+	}
+}
 
 @media screen and (max-width: 1380px) {
 	.app-main {
-		width: 85%;
+		width: 90%;
+	}
+}
+
+@media screen and (max-width: 1240px) {
+	.app-main {
+		width: 95%;
 	}
 }
 
