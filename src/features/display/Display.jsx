@@ -26,6 +26,7 @@ export const Display = () => {
 				<section className={displayStyles.primaryToggler}>
 					{primaryColor.map((prColor, id) => (
 						<div
+							key={id}
 							style={{
 								display: "flex",
 								justifyContent: "center",
@@ -33,7 +34,6 @@ export const Display = () => {
 							}}
 						>
 							<button
-								key={id}
 								onClick={() => dispatch(togglePrimary(prColor.class))}
 								className={displayStyles.primaryColor}
 								style={{
