@@ -43,32 +43,61 @@
 
 .users_info {
 	padding: 0 0 0 1rem;
+	text-decoration: none;
 }
 .users_info > h1 {
 	font-size: 1.7rem;
 	font-weight: 600;
+	text-decoration: none;
 	color: var(--head-primary);
 	transition: all 0.25s ease;
 }
 .users_info > h2 {
 	font-size: 1.325rem;
 	font-weight: 400;
+	text-decoration: none;
+	color: var(--head-secondary);
+	transition: all 0.25s ease;
+}
+.users_info:hover > h1,
+.users_info:hover > h2 {
+	color: var(--primary-color);
+	transition: all 0.25s ease;
+}
+
+.users_info_alt {
+	padding: 0 0 0 1rem;
+	text-decoration: none;
+}
+.users_info_alt > h1 {
+	font-size: 1.7rem;
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--head-primary);
+	transition: all 0.25s ease;
+}
+.users_info_alt > h2 {
+	font-size: 1.325rem;
+	font-weight: 400;
+	text-decoration: none;
 	color: var(--head-secondary);
 	transition: all 0.25s ease;
 }
 
 .users_info_cta {
-	font-size: 1.15rem;
-	font-weight: 500;
-	letter-spacing: 0.02rem;
+	z-index: 1;
+	font-size: 1.375rem;
+	letter-spacing: 0.04rem;
 	padding: 0.325rem 0.95rem;
 	border-radius: 4rem;
 	color: var(--head-secondary);
+	background-color: transparent;
 	border: 0.1rem solid var(--head-secondary);
 	transition: all 0.25s ease;
 }
 
 .users_info_cta:hover {
+	cursor: pointer;
 	color: var(--primary-color);
 	border: 0.1rem solid var(--primary-color);
 	transition: all 0.25s ease;

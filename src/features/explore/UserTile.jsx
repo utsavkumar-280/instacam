@@ -1,7 +1,7 @@
 import exploreStyles from "./Explore.module.css";
 import { Link } from "react-router-dom";
 
-const UserTile = ({ to, pic, name, username, removeBtn }) => {
+const UserTile = ({ to, pic, name, username }) => {
 	return (
 		<Link to={to} className={exploreStyles.users}>
 			<img src={pic} alt="post_user_pic" className={exploreStyles.users_pic} />
@@ -10,9 +10,6 @@ const UserTile = ({ to, pic, name, username, removeBtn }) => {
 					<h1>{name}</h1>
 					<h2>{username}</h2>
 				</section>
-				{removeBtn && (
-					<buton className={exploreStyles.users_info_cta}>Remove</buton>
-				)}
 			</section>
 		</Link>
 	);

@@ -10,28 +10,24 @@ export const FollowingUsers = () => {
 					pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
 					name="Utsav Kumar"
 					username="@utsavkumar280"
-					removeBtn
 				/>
 				<ProfileTile
 					to="/user-profile/rahul"
 					pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
 					name="Utsav Kumar"
 					username="@utsavkumar280"
-					removeBtn
 				/>
 				<ProfileTile
 					to="/user-profile/rahul"
 					pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
 					name="Utsav Kumar"
 					username="@utsavkumar280"
-					removeBtn
 				/>
 				<ProfileTile
 					to="/user-profile/rahul"
 					pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
 					name="Utsav Kumar"
 					username="@utsavkumar280"
-					removeBtn
 				/>
 			</section>
 		</section>
