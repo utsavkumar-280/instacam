@@ -1,0 +1,135 @@
+.main_conatiner {
+	z-index: 10;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--modal-bg);
+	backdrop-filter: blur(0.5px);
+	transition: all 0.25s ease;
+}
+
+.main_content {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	background-color: var(--modal-bg);
+	overflow-y: auto;
+	transition: all 0.25s ease;
+}
+
+.modal_container {
+	background-color: var(--background-color);
+	color: var(--head-primary);
+	min-width: 600px;
+	border-radius: 2rem;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: flex;
+	flex-direction: column;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1.5rem 2rem;
+	border-bottom: 0.1rem solid var(--line);
+}
+.header > h1 {
+	letter-spacing: 0.02rem;
+}
+.header_cta_container {
+	padding: 0.5rem;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.25s ease;
+}
+.header_cta_container:hover {
+	background-color: var(--primary-hover);
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+
+.header_cta {
+	height: 20px;
+	font-weight: 600;
+	color: var(--head-secondary);
+	transition: all 0.25s ease;
+}
+
+.header_cta_container:hover > .header_cta {
+	color: var(--primary-color);
+	transition: all 0.25s ease;
+}
+
+.header > h1 {
+	font-size: 2rem;
+}
+.content {
+	padding: 1.5rem 2rem;
+	flex-grow: 1;
+}
+
+.footer {
+	display: flex;
+	align-items: center;
+	padding: 1.5rem 2rem;
+	border-top: 0.1rem solid var(--line);
+	font-size: 1.5rem;
+}
+
+.update_cta {
+	font-size: 1.5rem;
+	font-weight: 500;
+	background-color: transparent;
+	border: 0.2rem solid var(--primary-color);
+	border-radius: 9999px;
+	color: var(--primary-color);
+	padding: 0.5rem 1.5rem;
+	margin-right: 1rem;
+	transition: all 0.25s ease;
+}
+.update_cta:hover {
+	background-color: var(--primary-hover);
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+
+.cancel_cta {
+	font-size: 1.5rem;
+	font-weight: 500;
+	background-color: transparent;
+	border: 0.2rem solid var(--head-secondary);
+	border-radius: 9999px;
+	color: var(--head-secondary);
+	padding: 0.5rem 1.5rem;
+	margin-right: 1rem;
+	transition: all 0.25s ease;
+}
+.cancel_cta:hover {
+	color: var(--primary-color);
+	border: 0.2rem solid var(--primary-color);
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+
+@media screen and (max-width: 640px) {
+	.modal_container {
+		min-width: 0px;
+		width: 100vw;
+		min-height: 100vh;
+		border-radius: 0;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+}
