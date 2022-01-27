@@ -6,6 +6,8 @@ import { primaryColor, mainTheme } from "./util/data";
 import {
 	toggleTheme,
 	togglePrimary,
+	themeToggler,
+	primaryToggler,
 	usePrimarySelector,
 	useThemeSelector,
 } from "../display/displaySlice";
@@ -34,7 +36,7 @@ export const Display = () => {
 							}}
 						>
 							<button
-								onClick={() => dispatch(togglePrimary(prColor.class))}
+								onClick={() => dispatch(primaryToggler(prColor.class))}
 								className={displayStyles.primaryColor}
 								style={{
 									backgroundColor: prColor.color,
@@ -64,7 +66,7 @@ export const Display = () => {
 									  }`
 									: displayStyles[newtheme.theme]
 							}
-							onClick={() => dispatch(toggleTheme(newtheme.class))}
+							onClick={() => dispatch(themeToggler(newtheme.class))}
 						>
 							{theme === newtheme.class ? (
 								<ImRadioChecked className={displayStyles.theme_icon_active} />
