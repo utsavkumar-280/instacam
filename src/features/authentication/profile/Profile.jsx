@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { Outlet } from "react-router";
 import { NavLink, useLocation } from "react-router-dom";
 import profileStyles from "./Profile.module.css";
 import { ImLink } from "react-icons/im";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
+import EditProfileModal from "./EditProfileModal";
+
 export const Profile = () => {
+	const [isModalOpen, setIsModalOpen] = useState(false);
 	const currentPath = useLocation().pathname;
 	console.log({ currentPath });
 	return (
@@ -32,7 +36,14 @@ export const Profile = () => {
 					/>
 
 					<div className={profileStyles.profile_footer}>
-						<button>Edit Profile</button>
+						<button
+							onClick={() => {
+								setIsModalOpen(true);
+								document.body.style.overflow = "hidden";
+							}}
+						>
+							Edit Profile
+						</button>
 						<button>Logout</button>
 					</div>
 				</div>
@@ -99,6 +110,8 @@ export const Profile = () => {
 				</section>
 			</section>
 			<Outlet />
+			<div className={profileStyles.home_end} />
+			{isModalOpen && <EditProfileModal setIsModalOpen={setIsModalOpen} />}
 		</div>
 	);
 };

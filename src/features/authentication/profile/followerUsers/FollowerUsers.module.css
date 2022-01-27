@@ -2,7 +2,6 @@
 	padding: 2.5rem;
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
-	min-height: 93.5vh;
 }
 
 .users_list {

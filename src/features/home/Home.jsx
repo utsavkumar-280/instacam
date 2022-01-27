@@ -10,7 +10,7 @@ export const Home = () => {
 			</header>
 			<AddPost />
 			<PostList />
-			<div className={homeStyles.home_end}> </div>
+			<div className={homeStyles.home_end} />
 		</div>
 	);
 };

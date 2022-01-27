@@ -7,7 +7,7 @@
 	position: sticky;
 	top: 0;
 	z-index: 1;
-	height: 6.5vh;
+	height: var(--head-height);
 	padding: 0.5rem 2.5rem;
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
@@ -17,20 +17,23 @@
 
 .search_container {
 	width: 100%;
-	height: 4.5vh;
+	height: 43.25px;
 	border-radius: 3rem;
 	border: 0.2rem solid var(--primary-color);
 	background-color: var(--background-color);
-	display: grid;
-	grid-template-columns: 2fr 8fr;
+	padding: 0 2rem;
+	display: flex;
+	align-items: center;
 	transition: all 0.25s ease;
 }
 .search_cta {
 	font-size: 2rem;
+	margin: 0 0 0 2rem;
 	color: var(--primary-color);
 	transition: all 0.25s ease;
 }
 .search_input {
+	flex-grow: 1;
 	background-color: var(--background-color);
 	border-radius: 0 3rem 3rem 0;
 	border: none;
@@ -184,9 +187,13 @@
 	transition: all 0.25s ease;
 }
 
-@media screen and (max-width: 1024px) {
+.home_end {
+	height: 10vh;
+}
+
+@media screen and (max-width: 768px) {
 	.head_container {
-		height: 10vh;
+		height: var(--head-height-mobile);
 		padding: 1rem 2rem;
 	}
 	.search_container {

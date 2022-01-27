@@ -1,6 +1,6 @@
 import { useState } from "react";
 import exploreStyles from "./Explore.module.css";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import UserTile from "./UserTile";
@@ -11,10 +11,6 @@ export const Explore = () => {
 		<div className={exploreStyles.container}>
 			<header className={exploreStyles.head_container}>
 				<div className={exploreStyles.search_container}>
-					<button className={exploreStyles.search_cta_container}>
-						<FiSearch className={exploreStyles.search_cta} />
-					</button>
-
 					<input
 						type="text"
 						className={exploreStyles.search_input}
@@ -22,6 +18,16 @@ export const Explore = () => {
 						value={inputSearch}
 						onChange={(e) => setInputSearch(e.target.value)}
 					/>
+					<button className={exploreStyles.search_cta_container}>
+						{inputSearch ? (
+							<FiX
+								className={exploreStyles.search_cta}
+								onClick={() => setInputSearch("")}
+							/>
+						) : (
+							<FiSearch className={exploreStyles.search_cta} />
+						)}
+					</button>
 				</div>
 			</header>
 
@@ -98,6 +104,7 @@ export const Explore = () => {
 						</section>
 					</div>
 				)}
+				<div className={exploreStyles.home_end} />
 			</section>
 		</div>
 	);

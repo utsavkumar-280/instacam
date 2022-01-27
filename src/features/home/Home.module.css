@@ -7,7 +7,7 @@
 	position: sticky;
 	top: 0;
 	z-index: 1;
-	height: 6.5vh;
+	height: var(--head-height);
 	padding: 1rem 2rem;
 	background-color: var(--background-color);
 	border-bottom: 0.1rem solid var(--line);
@@ -347,6 +347,12 @@
 	.add_post {
 		position: sticky;
 		top: 10vh;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.head_container {
+		height: var(--head-height-mobile);
 	}
 }
 

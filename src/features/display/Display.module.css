@@ -5,7 +5,7 @@
 	min-height: 100vh;
 }
 .head_container {
-	height: 6.5vh;
+	height: var(--head-height);
 	padding: 1rem 2rem;
 	background-color: var(--background-color);
 	border-bottom: 0.1rem solid var(--line);
@@ -144,9 +144,9 @@
 	transition: all 0.25s ease;
 }
 
-@media screen and (max-height: 768px) {
+@media screen and (max-width: 768px) {
 	.head_container {
-		height: 10vh;
+		height: var(--head-height-mobile);
 	}
 	.content_container {
 		height: 90vh;
