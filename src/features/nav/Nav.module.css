@@ -100,8 +100,12 @@
 	padding: 1.325rem 2rem;
 	border: none;
 	border-radius: 3rem;
+	text-decoration: none;
 	background-color: var(--primary-color);
 	color: var(--head-primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	cursor: pointer;
 	transition: all 0.25s ease;
 }
@@ -109,11 +113,11 @@
 	background-color: var(--primary-cta-hover);
 	transition: all 0.25s ease;
 }
-.link_logout_cta > a {
+.link_logout_cta > p {
 	color: #ffffff;
 	font-size: 1.75rem;
 	font-weight: 600;
-	letter-spacing: 0.01rem;
+	letter-spacing: 0.05rem;
 	text-decoration: none;
 	transition: all 0.25s ease;
 }
