@@ -1,23 +1,19 @@
 import homeStyles from "../Home.module.css";
 import { IoImageOutline } from "react-icons/io5";
+import { XIcon } from "@heroicons/react/solid";
 
 export const AddPost = ({
 	postImgPreview,
 	setPostImgPreview,
 	postImgFile,
 	setPostImgFile,
+	delToken,
+	setDelToken,
+	inputImg,
+	setInputImg,
+	onChangeHandler,
+	clearUpdates,
 }) => {
-	const onChangeHandler = (event) => {
-		const file = event.target.files[0];
-		const reader = new FileReader();
-		reader.readAsDataURL(file);
-
-		setPostImgFile(file);
-		reader.onloadend = () => {
-			setPostImgPreview(reader.result);
-		};
-	};
-
 	return (
 		<div className={homeStyles.add_post}>
 			<section className={homeStyles.post_layout}>
@@ -29,9 +25,19 @@ export const AddPost = ({
 					/>
 				</div>
 				<form className={homeStyles.form_conatiner}>
-					<section className={homeStyles.form_input}>
-						<textarea placeholder="What's Happening?" />
-					</section>
+					<textarea placeholder="What's Happening?" />
+					{inputImg && (
+						<div className={homeStyles.form_img_conatiner}>
+							<img src={inputImg} alt="post_img" />
+							<div
+								className={homeStyles.header_cta_container}
+								onClick={clearUpdates}
+							>
+								<XIcon className={homeStyles.header_cta} />
+							</div>
+						</div>
+					)}
+
 					<section className={homeStyles.form_cta_container}>
 						<input
 							type="file"

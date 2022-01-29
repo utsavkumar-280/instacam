@@ -11,6 +11,7 @@ const PreviewModal = ({
 	uploadHandler,
 	setToken,
 	setInput,
+	isPost,
 }) => {
 	const [isUploading, setIsUploading] = useState(false);
 
@@ -23,6 +24,7 @@ const PreviewModal = ({
 						<div
 							className={style.header_cta_container}
 							onClick={() => {
+								document.body.style.overflow = "overlay";
 								setPreview("");
 								setFile(null);
 							}}
@@ -45,8 +47,12 @@ const PreviewModal = ({
 										setToken,
 										setInput,
 										setPreview,
-										setIsUploading
+										setIsUploading,
+										isPost
 									);
+									// if (isPost) {
+									// 	document.body.style.overflow = "overlay";
+									// }
 								}
 							}}
 						>

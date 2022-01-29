@@ -8,12 +8,13 @@ import PreviewModal from "./PreviewModal";
 import { CLOUDINARY_URL, CLOUDINARY_PRESET } from "../../utils";
 
 const EditProfileModal = ({ setIsModalOpen }) => {
-	const [inputProfile, setInputProfile] = useState(
-		"https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
-	);
-	const [inputCover, setInputCover] = useState(
-		"https://i.postimg.cc/j2KQHrWL/hero1.jpg"
-	);
+	const initalInput = [
+		"https://i.postimg.cc/j2KQHrWL/hero1.jpg",
+		"https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg",
+	];
+	const [inputCover, setInputCover] = useState(initalInput[0]);
+	const [inputProfile, setInputProfile] = useState(initalInput[1]);
+
 	const [inputBio, setInputBio] = useState("");
 	const [inputLocation, setInputLocation] = useState("");
 	const [inputWebsite, setInputWebsite] = useState("");
@@ -85,13 +86,16 @@ const EditProfileModal = ({ setIsModalOpen }) => {
 			formData.append("upload_preset", CLOUDINARY_PRESET);
 			if (type === "cover") {
 				formData.append("token", coverDeleteToken);
+				await axios.post(`${CLOUDINARY_URL}/delete_by_token`, formData);
+				setToken("");
+				setInputCover(initalInput[0]);
 			}
 			if (type === "profile") {
 				formData.append("token", profileDeleteToken);
+				await axios.post(`${CLOUDINARY_URL}/delete_by_token`, formData);
+				setToken("");
+				setInputProfile(initalInput[1]);
 			}
-
-			await axios.post(`${CLOUDINARY_URL}/delete_by_token`, formData);
-			setToken("");
 		} catch (error) {
 			console.log(error);
 			setToken("");

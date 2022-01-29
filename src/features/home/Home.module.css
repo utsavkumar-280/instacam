@@ -201,6 +201,46 @@
 	flex-direction: column;
 	transition: all 0.25s ease;
 }
+.form_img_conatiner > img {
+	width: 100%;
+	border-radius: 1.25rem;
+}
+.form_img_conatiner {
+	position: relative;
+}
+
+.header_cta_container {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0.75rem;
+	margin-top: 0.5rem;
+	margin-right: 0.5rem;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	background-color: var(--background-card);
+	align-items: center;
+	transition: all 0.25s ease;
+}
+.header_cta_container:hover {
+	background-color: var(--background-card-hover);
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+
+.header_cta {
+	height: 25px;
+	font-weight: 600;
+	color: var(--head-secondary);
+	transition: all 0.25s ease;
+}
+
+.header_cta_container:hover > .header_cta {
+	color: var(--primary-color);
+	transition: all 0.25s ease;
+}
+
 .form_conatiner textarea {
 	resize: none;
 	width: 100%;
