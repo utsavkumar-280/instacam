@@ -7,7 +7,7 @@
 	position: sticky;
 	top: 0;
 	z-index: 1;
-	height: 6.5vh;
+	height: var(--head-height);
 	padding: 0.5rem 2.5rem;
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
@@ -17,20 +17,23 @@
 
 .search_container {
 	width: 100%;
-	height: 4.5vh;
+	height: 43.25px;
 	border-radius: 3rem;
 	border: 0.2rem solid var(--primary-color);
 	background-color: var(--background-color);
-	display: grid;
-	grid-template-columns: 2fr 8fr;
+	padding: 0 2rem;
+	display: flex;
+	align-items: center;
 	transition: all 0.25s ease;
 }
 .search_cta {
 	font-size: 2rem;
+	margin: 0 0 0 2rem;
 	color: var(--primary-color);
 	transition: all 0.25s ease;
 }
 .search_input {
+	flex-grow: 1;
 	background-color: var(--background-color);
 	border-radius: 0 3rem 3rem 0;
 	border: none;
@@ -56,27 +59,31 @@
 	transition: all 0.25s ease;
 }
 
-.suggested_section {
+.userList_section {
 	padding: 1rem 1.5rem;
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
 	min-height: 93.5vh;
 }
-.suggested_container {
+.userList_container {
 	background-color: var(--background-card);
-	/* min-height: 70vh; */
 	border-radius: 2rem;
-	padding: 1.5rem 0 2rem 0;
+	padding: 1.5rem 0 0 0;
+	transition: all 0.25s ease;
+}
+.userList_container_alt {
+	background-color: var(--background-card);
+	border-radius: 2rem;
+	padding: 0;
 	transition: all 0.25s ease;
 }
 
-.suggested_header {
+.userList_header {
 	padding: 0 2rem 1.5rem 2rem;
-	border-bottom: 0.1rem solid var(--line);
 	transition: all 0.25s ease;
 }
 
-.suggested_header > p {
+.userList_header > p {
 	font-size: 1.875rem;
 	font-weight: 700;
 	letter-spacing: 0.025rem;
@@ -87,6 +94,40 @@
 .users_list {
 	display: flex;
 	flex-direction: column;
+	border-top: 0.1rem solid var(--line);
+}
+.users_list_alt {
+	display: flex;
+	flex-direction: column;
+}
+.users_alt:first-child {
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
+}
+
+.users_alt:last-child {
+	border-bottom: 0.1rem solid transparent;
+	border-bottom-left-radius: 2rem;
+	border-bottom-right-radius: 2rem;
+}
+
+.users:last-child {
+	border-bottom: 0.1rem solid transparent;
+	border-bottom-left-radius: 2rem;
+	border-bottom-right-radius: 2rem;
+}
+
+.users_alt {
+	display: grid;
+	grid-template-columns: 1fr 9fr;
+	padding: 1.5rem 2rem;
+	border-bottom: 0.1rem solid var(--line);
+	transition: all 0.25s ease;
+	text-decoration: none;
+}
+.users_alt:hover {
+	background-color: var(--background-card-hover);
+	transition: all 0.25s ease;
 }
 
 .users {
@@ -108,6 +149,11 @@
 	border-radius: 50%;
 	transition: all 0.25s ease;
 }
+.users_info_container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 .users_info {
 	padding: 0 0 0 1rem;
 }
@@ -124,18 +170,33 @@
 	transition: all 0.25s ease;
 }
 
-@media screen and (max-height: 940px) {
+.users_info_cta {
+	font-size: 1.15rem;
+	font-weight: 500;
+	letter-spacing: 0.02rem;
+	padding: 0.325rem 0.95rem;
+	border-radius: 4rem;
+	color: var(--head-secondary);
+	border: 0.1rem solid var(--head-secondary);
+	transition: all 0.25s ease;
+}
+
+.users_info_cta:hover {
+	color: var(--primary-color);
+	border: 0.1rem solid var(--primary-color);
+	transition: all 0.25s ease;
+}
+
+.home_end {
+	height: 10vh;
+}
+
+@media screen and (max-width: 768px) {
 	.head_container {
-		height: 7.5vh;
-		padding: 0.75rem 2rem;
+		height: var(--head-height-mobile);
+		padding: 1rem 2rem;
 	}
 	.search_container {
 		height: 100%;
-	}
-}
-@media screen and (max-height: 740px) {
-	.head_container {
-		height: 10vh;
-		padding: 1rem 2rem;
 	}
 }

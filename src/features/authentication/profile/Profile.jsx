@@ -1,8 +1,16 @@
+import { useState } from "react";
+import { Outlet } from "react-router";
+import { NavLink, useLocation } from "react-router-dom";
 import profileStyles from "./Profile.module.css";
 import { ImLink } from "react-icons/im";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 
+import EditProfileModal from "./EditProfileModal";
+
 export const Profile = () => {
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const currentPath = useLocation().pathname;
+	console.log({ currentPath });
 	return (
 		<div className={profileStyles.container}>
 			<header className={profileStyles.head_container}>
@@ -28,7 +36,14 @@ export const Profile = () => {
 					/>
 
 					<div className={profileStyles.profile_footer}>
-						<button>Edit Profile</button>
+						<button
+							onClick={() => {
+								setIsModalOpen(true);
+								document.body.style.overflow = "hidden";
+							}}
+						>
+							Edit Profile
+						</button>
 						<button>Logout</button>
 					</div>
 				</div>
@@ -58,17 +73,45 @@ export const Profile = () => {
 						</div>
 					</div>
 					<section className={profileStyles.follow_container}>
-						<div className={profileStyles.follow_info}>
+						<NavLink
+							to="/user-profile/utsav/followerUsers"
+							className={
+								currentPath === "/user-profile/utsav/followerUsers"
+									? `${profileStyles.follow_info_active}`
+									: `${profileStyles.follow_info}`
+							}
+						>
 							<span>100</span>
 							Followers
-						</div>
-						<div className={profileStyles.follow_info}>
+						</NavLink>
+						<NavLink
+							to="/user-profile/utsav/followingUsers"
+							className={
+								currentPath === "/user-profile/utsav/followingUsers"
+									? `${profileStyles.follow_info_active}`
+									: `${profileStyles.follow_info}`
+							}
+						>
 							<span>102</span>
 							Following
-						</div>
+						</NavLink>
+						<NavLink
+							to="/user-profile/utsav"
+							className={
+								currentPath === "/user-profile/utsav"
+									? `${profileStyles.follow_info_active}`
+									: `${profileStyles.follow_info}`
+							}
+						>
+							<span>0</span>
+							Posts
+						</NavLink>
 					</section>
 				</section>
 			</section>
+			<Outlet />
+			<div className={profileStyles.home_end} />
+			{isModalOpen && <EditProfileModal setIsModalOpen={setIsModalOpen} />}
 		</div>
 	);
 };

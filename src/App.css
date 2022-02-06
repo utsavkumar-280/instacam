@@ -3,6 +3,7 @@
 	border: 0;
 	margin: 0;
 	padding: 0;
+	font-family: "Poppins", sans-serif;
 }
 html {
 	font-size: 62.5%;
@@ -11,6 +12,11 @@ html {
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	overflow: overlay;
+}
+:root {
+	--head-height: 63.25px;
+	--head-height-mobile: 72px;
 }
 
 .default {
@@ -18,6 +24,8 @@ body {
 	--background-hover: #f7f7f7;
 	--background-card: #f7f9f9;
 	--background-card-hover: #eff1f1;
+	--modal-bg: rgba(0, 0, 0, 0.4);
+	--modal-cta: rgb(247, 249, 249, 0.4);
 
 	--head-primary: #0f1419;
 	--head-secondary: #536471;
@@ -30,6 +38,8 @@ body {
 	--background-hover: #1c2732;
 	--background-card: #192734;
 	--background-card-hover: #202e3a;
+	--modal-bg: rgba(91, 112, 131, 0.4);
+	--modal-cta: rgb(25, 39, 52, 0.7);
 
 	--head-primary: #ffffff;
 	--head-secondary: #8899a6;
@@ -43,6 +53,8 @@ body {
 	--background-hover: #080808;
 	--background-card: #15181c;
 	--background-card-hover: #1c1f23;
+	--modal-bg: rgba(91, 112, 131, 0.4);
+	--modal-cta: rgba(21, 24, 28, 0.4);
 
 	--head-primary: #d9d9d9;
 	--head-secondary: #6e767d;
@@ -99,7 +111,7 @@ body {
 }
 
 .app-main {
-	width: 67.5vw;
+	width: 67.5%;
 	background-color: var(--background-color);
 	padding: 0 0.75rem;
 	display: grid;
@@ -121,7 +133,6 @@ body {
 	height: 100vh;
 	position: sticky;
 	top: 0;
-	z-index: 1;
 	overflow-y: scroll;
 }
 
@@ -136,9 +147,35 @@ body {
 	scrollbar-width: none; /* Firefox */
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 0.95rem;
+	transition: all 0.25s ease;
+}
+
+::-webkit-scrollbar-track {
+	border: 0.5rem solid transparent;
+	background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: #949ba0;
+	transition: all 0.25s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #b7bfc5;
+	transition: all 0.25s ease;
+}
+
+@media screen and (max-width: 1540px) {
+	.app-main {
+		width: 80%;
+	}
+}
+
 @media screen and (max-width: 1380px) {
 	.app-main {
-		width: 85%;
+		width: 90%;
 	}
 }
 
@@ -147,13 +184,18 @@ body {
 		width: 95%;
 	}
 }
-@media screen and (max-width: 980px) {
+
+@media screen and (max-width: 1024px) {
 	.app-main {
-		width: 100%;
+		display: grid;
+		grid-template-columns: 3.25fr 7fr;
+	}
+	.explore-container {
+		display: none;
 	}
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 768px) {
 	.app-main {
 		width: 100%;
 		padding: 0;

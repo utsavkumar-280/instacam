@@ -1,11 +1,13 @@
 import homeStyles from "./Home.module.css";
 import { GoHeart } from "react-icons/go";
 import { IoHeartOutline } from "react-icons/io5";
+import { TrashIcon } from "@heroicons/react/outline";
 
-export const PostCard = () => {
+export const PostCard = ({ deleteBtn }) => {
+	const isLikedpost = true;
 	return (
 		<div className={homeStyles.main_post}>
-			{true && (
+			{(isLikedpost || deleteBtn) && (
 				<div className={homeStyles.post_layout}>
 					<section className={homeStyles.likes_container}>
 						<div className={homeStyles.likes_content}>
@@ -13,7 +15,12 @@ export const PostCard = () => {
 						</div>
 					</section>
 					<section className={homeStyles.post_content}>
-						Liked by 2 people
+						<p>Liked by 2 people</p>
+						{deleteBtn && (
+							<div className={homeStyles.post_cta_icon_container}>
+								<TrashIcon className={homeStyles.post_cta_icon} />
+							</div>
+						)}
 					</section>
 				</div>
 			)}

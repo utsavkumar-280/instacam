@@ -12,6 +12,9 @@ import {
 	Login,
 	Signup,
 	Profile,
+	FollowerUsers,
+	FollowingUsers,
+	ProfilePosts,
 	Nav,
 	PhoneNav,
 	Explore,
@@ -37,10 +40,14 @@ function App() {
 						<AuthRoute path="/signup" element={<Signup />} />
 
 						<PrivateRoute path="/" element={<Home />} />
-						<PrivateRoute
-							path="/user-profile/:userName"
-							element={<Profile />}
-						/>
+						<PrivateRoute path="/user-profile/:userName" element={<Profile />}>
+							<PrivateRoute path="/" element={<ProfilePosts />} />
+							<PrivateRoute path="followerUsers" element={<FollowerUsers />} />
+							<PrivateRoute
+								path="followingUsers"
+								element={<FollowingUsers />}
+							/>
+						</PrivateRoute>
 						<PrivateRoute path="/display" element={<Display />} />
 						<PrivateRoute path="/search" element={<Explore />} />
 						<PrivateRoute path="/notification" element={<Notification />} />

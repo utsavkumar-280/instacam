@@ -1,10 +1,19 @@
-import { useState } from "react";
 import homeStyles from "../Home.module.css";
-import { ImageUploader } from "./ImageUploader";
-import { IoImageOutline, IoCloudUpload } from "react-icons/io5";
+import { IoImageOutline } from "react-icons/io5";
+import { XIcon } from "@heroicons/react/solid";
 
-export const AddPost = () => {
-	const [imgDrop, setImgDrop] = useState(false);
+export const AddPost = ({
+	postImgPreview,
+	setPostImgPreview,
+	postImgFile,
+	setPostImgFile,
+	delToken,
+	setDelToken,
+	inputImg,
+	setInputImg,
+	onChangeHandler,
+	clearUpdates,
+}) => {
 	return (
 		<div className={homeStyles.add_post}>
 			<section className={homeStyles.post_layout}>
@@ -16,18 +25,32 @@ export const AddPost = () => {
 					/>
 				</div>
 				<form className={homeStyles.form_conatiner}>
-					<section className={homeStyles.form_input}>
-						<textarea placeholder="What's Happening?" />
-						<ImageUploader imgDrop={imgDrop} setImgDrop={setImgDrop} />
-					</section>
+					<textarea placeholder="What's Happening?" />
+					{inputImg && (
+						<div className={homeStyles.form_img_conatiner}>
+							<img src={inputImg} alt="post_img" />
+							<div
+								className={homeStyles.header_cta_container}
+								onClick={clearUpdates}
+							>
+								<XIcon className={homeStyles.header_cta} />
+							</div>
+						</div>
+					)}
+
 					<section className={homeStyles.form_cta_container}>
-						<button
-							type="button"
-							className={homeStyles.form_upload}
-							onClick={() => setImgDrop((prev) => !prev)}
-						>
+						<input
+							type="file"
+							id="input_postImg"
+							hidden
+							onChange={(event) => {
+								document.body.style.overflow = "hidden";
+								onChangeHandler(event);
+							}}
+						/>
+						<label htmlFor="input_postImg" className={homeStyles.form_upload}>
 							<IoImageOutline className={homeStyles.form_upload_cta} />
-						</button>
+						</label>
 						<button
 							type="button"
 							className={homeStyles.form_cta}

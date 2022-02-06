@@ -2,7 +2,7 @@
 	display: none;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 768px) {
 	.container {
 		z-index: 5;
 		position: fixed;
@@ -29,6 +29,7 @@
 	}
 	.link_icons {
 		font-size: 3rem;
+		height: 30px;
 		color: var(--head-secondary);
 		transition: all ease 0.25s;
 	}

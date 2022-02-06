@@ -6,6 +6,8 @@ import { primaryColor, mainTheme } from "./util/data";
 import {
 	toggleTheme,
 	togglePrimary,
+	themeToggler,
+	primaryToggler,
 	usePrimarySelector,
 	useThemeSelector,
 } from "../display/displaySlice";
@@ -25,23 +27,31 @@ export const Display = () => {
 				<h2>Color</h2>
 				<section className={displayStyles.primaryToggler}>
 					{primaryColor.map((prColor, id) => (
-						<button
+						<div
 							key={id}
-							onClick={() => dispatch(togglePrimary(prColor.class))}
-							className={displayStyles.primaryColor}
 							style={{
-								backgroundColor: prColor.color,
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
 							}}
 						>
-							{primary === prColor.class ? (
-								<FaCheck className={displayStyles.check_icon} />
-							) : (
-								<FaCheck
-									style={{ color: prColor.color }}
-									className={displayStyles.check_icon}
-								/>
-							)}
-						</button>
+							<button
+								onClick={() => dispatch(primaryToggler(prColor.class))}
+								className={displayStyles.primaryColor}
+								style={{
+									backgroundColor: prColor.color,
+								}}
+							>
+								{primary === prColor.class ? (
+									<FaCheck className={displayStyles.check_icon} />
+								) : (
+									<FaCheck
+										style={{ color: prColor.color }}
+										className={displayStyles.check_icon}
+									/>
+								)}
+							</button>
+						</div>
 					))}
 				</section>
 				<h2>Theme</h2>
@@ -56,7 +66,7 @@ export const Display = () => {
 									  }`
 									: displayStyles[newtheme.theme]
 							}
-							onClick={() => dispatch(toggleTheme(newtheme.class))}
+							onClick={() => dispatch(themeToggler(newtheme.class))}
 						>
 							{theme === newtheme.class ? (
 								<ImRadioChecked className={displayStyles.theme_icon_active} />
