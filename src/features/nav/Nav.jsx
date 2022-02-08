@@ -13,12 +13,15 @@ import {
 	LightBulbIcon as LightBulbIconOutline,
 	SearchIcon as SearchIconOutline,
 } from "@heroicons/react/outline";
+import { useDispatch } from "react-redux";
 
 import navStyles from "./Nav.module.css";
 import { useAuth } from "../authentication/authSlice";
+import { logoutUser } from "../authentication/authSlice";
 
 export const Nav = () => {
 	const currentPath = useLocation().pathname;
+	const dispatch = useDispatch();
 	const {
 		authentication: { name, userName, profilePic },
 	} = useAuth();
@@ -108,9 +111,12 @@ export const Nav = () => {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/login" className={navStyles.link_logout_cta}>
+						<button
+							className={navStyles.link_logout_cta}
+							onClick={() => dispatch(logoutUser())}
+						>
 							<p>Logout</p>
-						</NavLink>
+						</button>
 					</li>
 				</ul>
 			</nav>

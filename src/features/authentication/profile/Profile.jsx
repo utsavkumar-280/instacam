@@ -1,16 +1,21 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
 import { NavLink, useLocation } from "react-router-dom";
-import profileStyles from "./Profile.module.css";
 import { ImLink } from "react-icons/im";
 import { HiOutlineLocationMarker } from "react-icons/hi";
+import { useDispatch } from "react-redux";
 
 import EditProfileModal from "./EditProfileModal";
+import profileStyles from "./Profile.module.css";
+import { logoutUser } from "../authSlice";
 
 export const Profile = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const currentPath = useLocation().pathname;
 	console.log({ currentPath });
+
+	const dispatch = useDispatch();
+
 	return (
 		<div className={profileStyles.container}>
 			<header className={profileStyles.head_container}>
@@ -44,7 +49,7 @@ export const Profile = () => {
 						>
 							Edit Profile
 						</button>
-						<button>Logout</button>
+						<button onClick={() => dispatch(logoutUser())}>Logout</button>
 					</div>
 				</div>
 				<section className={profileStyles.profile_info}>
