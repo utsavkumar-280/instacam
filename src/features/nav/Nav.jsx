@@ -1,6 +1,4 @@
-import navStyles from "./Nav.module.css";
 import { NavLink, Link, useLocation } from "react-router-dom";
-
 import {
 	HomeIcon,
 	BellIcon,
@@ -16,8 +14,14 @@ import {
 	SearchIcon as SearchIconOutline,
 } from "@heroicons/react/outline";
 
+import navStyles from "./Nav.module.css";
+import { useAuth } from "../authentication/authSlice";
+
 export const Nav = () => {
 	const currentPath = useLocation().pathname;
+	const {
+		authentication: { name, userName, profilePic },
+	} = useAuth();
 	return (
 		<div className={navStyles.container}>
 			<header className={navStyles.head_container}>
@@ -114,13 +118,13 @@ export const Nav = () => {
 			<footer className={navStyles.footer_container}>
 				<NavLink to="/user-profile" className={navStyles.nav_user}>
 					<img
-						src="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
+						src={profilePic}
 						alt="user_img"
 						className={navStyles.nav_user_img}
 					/>
 					<article className={navStyles.nav_user_text}>
-						<h1>Utsav Kumar</h1>
-						<h2>@utsavkumar280</h2>
+						<h1>{name}</h1>
+						<h2>{`@${userName}`}</h2>
 					</article>
 				</NavLink>
 			</footer>
