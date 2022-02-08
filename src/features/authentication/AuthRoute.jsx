@@ -1,5 +1,10 @@
 import { Route, Navigate } from "react-router";
+import { useAuth } from "./authSlice";
 
 export const AuthRoute = ({ path, ...props }) => {
-	return false ? <Navigate replace to="/" /> : <Route path={path} {...props} />;
+	const {
+		authentication: { token },
+	} = useAuth();
+
+	return token ? <Navigate replace to="/" /> : <Route path={path} {...props} />;
 };
