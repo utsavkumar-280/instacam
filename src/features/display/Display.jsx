@@ -4,8 +4,6 @@ import { FaCheck } from "react-icons/fa";
 import { ImRadioUnchecked, ImRadioChecked } from "react-icons/im";
 import { primaryColor, mainTheme } from "./util/data";
 import {
-	toggleTheme,
-	togglePrimary,
 	themeToggler,
 	primaryToggler,
 	usePrimarySelector,

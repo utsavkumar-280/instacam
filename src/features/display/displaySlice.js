@@ -43,6 +43,4 @@ export const usePrimarySelector = () =>
 export const useThemeSelector = () =>
 	useSelector((state) => state.display.theme);
 
-export const { togglePrimary, toggleTheme } = displaySlice.actions;
-
 export default displaySlice.reducer;
