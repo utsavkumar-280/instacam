@@ -3,10 +3,32 @@ import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+import { useDispatch } from "react-redux";
+import { loginUser } from "../authSlice";
+import { useAuth } from "../authSlice";
 import loginStyles from "../Auth.module.css";
 
 export const Login = () => {
+	const [isLoading, setIsLoading] = useState(false);
 	const [isHidden, setIsHidden] = useState(true);
+	const dispatch = useDispatch();
+
+	const {
+		login: { error },
+	} = useAuth();
+
+	const login = async (values) => {
+		setIsLoading(true);
+		const userDetails = {
+			email: values.email,
+			password: values.password,
+		};
+		const loginResponse = await dispatch(loginUser(userDetails));
+		if (loginResponse) {
+			setIsLoading(false);
+		}
+	};
 	return (
 		<div className={loginStyles.container}>
 			<div className={loginStyles.content_card}>
@@ -23,7 +45,8 @@ export const Login = () => {
 					})}
 					onSubmit={(values, { setSubmitting }) => {
 						setTimeout(() => {
-							alert(JSON.stringify(values, null, 2));
+							console.log(values);
+							login(values);
 							setSubmitting(false);
 						}, 400);
 					}}
@@ -75,8 +98,10 @@ export const Login = () => {
 							<ErrorMessage name="password" className="form-error" />
 						</div>
 
+						{error && <div className={loginStyles.inpurt_error}>{error}</div>}
+
 						<button type="submit" className={loginStyles.form_submit_cta}>
-							Login
+							{isLoading ? "Logging In..." : "Login"}
 						</button>
 
 						<p className={`${loginStyles.form_text} ${loginStyles.marginTop1}`}>
