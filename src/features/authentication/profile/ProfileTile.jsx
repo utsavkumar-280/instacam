@@ -3,16 +3,6 @@ import { Link } from "react-router-dom";
 
 const ProfileTile = ({ to, pic, name, username, isForFollower }) => {
 	return isForFollower ? (
-		<Link to={to} className={styles.users}>
-			<img src={pic} alt="post_user_pic" className={styles.users_pic} />
-			<section className={styles.users_info_container}>
-				<section className={styles.users_info_alt}>
-					<h1>{name}</h1>
-					<h2>{username}</h2>
-				</section>
-			</section>
-		</Link>
-	) : (
 		<div className={styles.users}>
 			<img src={pic} alt="post_user_pic" className={styles.users_pic} />
 			<section className={styles.users_info_container}>
@@ -28,6 +18,16 @@ const ProfileTile = ({ to, pic, name, username, isForFollower }) => {
 				</button>
 			</section>
 		</div>
+	) : (
+		<Link to={to} className={styles.users}>
+			<img src={pic} alt="post_user_pic" className={styles.users_pic} />
+			<section className={styles.users_info_container}>
+				<section className={styles.users_info_alt}>
+					<h1>{name}</h1>
+					<h2>{username}</h2>
+				</section>
+			</section>
+		</Link>
 	);
 };
 
