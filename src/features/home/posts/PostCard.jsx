@@ -1,4 +1,4 @@
-import homeStyles from "./Home.module.css";
+import homeStyles from "../Home.module.css";
 import { GoHeart } from "react-icons/go";
 import { IoHeartOutline } from "react-icons/io5";
 import { TrashIcon } from "@heroicons/react/outline";

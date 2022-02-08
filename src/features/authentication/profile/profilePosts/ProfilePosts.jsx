@@ -1,6 +1,6 @@
 import styles from "./Profile.module.css";
 
-import { PostCard } from "../../../home/PostCard";
+import { PostCard } from "../../../home/posts/PostCard";
 
 const ProfilePosts = () => {
 	return (

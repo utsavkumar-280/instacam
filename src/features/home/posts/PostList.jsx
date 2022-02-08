@@ -1,4 +1,4 @@
-import homeStyles from "./Home.module.css";
+import homeStyles from "../Home.module.css";
 import { PostCard } from "./PostCard";
 
 export const PostList = () => {
