@@ -162,7 +162,7 @@ export const Profile = () => {
 								<NavLink
 									to={`/user-profile/${userName}`}
 									className={
-										currentPath === "/user-profile/utsav"
+										currentPath === `/user-profile/${userName}`
 											? `${profileStyles.follow_info_active}`
 											: `${profileStyles.follow_info}`
 									}

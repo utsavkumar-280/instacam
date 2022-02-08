@@ -7,18 +7,28 @@ import UserTile from "./UserTile";
 import { useUsers } from "./usersSlice";
 import { useAuth } from "../authentication/authSlice";
 
+function shuffle(array) {
+	for (let i = array.length - 1; i > 0; i--) {
+		let j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
+	return array;
+}
+
 export const Explore = () => {
 	const [inputSearch, setInputSearch] = useState("");
 	const { users } = useUsers();
 	const {
-		authentication: { name, userName, profilePic },
+		authentication: { userName },
 	} = useAuth();
 
 	const followSuggestions = (users) => {
 		let nonFollowers = users.filter(
 			(user) => !user.followedByViewer && userName !== user.userName
 		);
-		if (nonFollowers.length > 5) {
+
+		nonFollowers = shuffle(nonFollowers);
+		if (nonFollowers.length > 4) {
 			return [
 				nonFollowers[1],
 				nonFollowers[0],
@@ -29,6 +39,8 @@ export const Explore = () => {
 		}
 		return nonFollowers;
 	};
+
+	const suggestedUsers = followSuggestions(users);
 
 	const searchUsers = (users, searchKeyword) => {
 		const searchedUpper = searchKeyword.toUpperCase();
@@ -52,7 +64,6 @@ export const Explore = () => {
 
 	console.log({ searchedUsers });
 
-	const suggestedUsers = followSuggestions(users);
 	return (
 		<div className={exploreStyles.container}>
 			<header className={exploreStyles.head_container}>
@@ -81,23 +92,31 @@ export const Explore = () => {
 				{inputSearch ? (
 					<div className={exploreStyles.userList_container_alt}>
 						<section className={exploreStyles.users_list_alt}>
-							{searchedUsers.map((user) => (
-								<Link
-									to={`/user-profile/${user?.userName}`}
-									key={user?._id}
-									className={exploreStyles.users_alt}
-								>
-									<img
-										src={user?.profilePic}
-										alt="post_user_pic"
-										className={exploreStyles.users_pic}
-									/>
+							{searchedUsers.length !== 0 ? (
+								searchedUsers.map((user) => (
+									<Link
+										to={`/user-profile/${user?.userName}`}
+										key={user?._id}
+										className={exploreStyles.users_alt}
+									>
+										<img
+											src={user?.profilePic}
+											alt="post_user_pic"
+											className={exploreStyles.users_pic}
+										/>
+										<section className={exploreStyles.users_info}>
+											<h1>{user?.name}</h1>
+											<h2>{`@${user?.userName}`}</h2>
+										</section>
+									</Link>
+								))
+							) : (
+								<div className={exploreStyles.users_empty}>
 									<section className={exploreStyles.users_info}>
-										<h1>{user?.name}</h1>
-										<h2>{`@${user?.userName}`}</h2>
+										<h1>No user found</h1>
 									</section>
-								</Link>
-							))}
+								</div>
+							)}
 						</section>
 					</div>
 				) : (
