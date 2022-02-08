@@ -22,11 +22,35 @@ import {
 	Display,
 	Notification,
 } from "./features";
+import setAxiosErrorHandler from "./features/authentication/utils/setAxiosErrorHandler";
+import setAuthHeader from "./features/authentication/utils/setAuthHeader";
+import { useAuth } from "./features/authentication/authSlice";
+import { loadAllUsers } from "./features/explore/usersSlice";
+import { loadPosts } from "./features/home/posts/postsSlice";
+import { loadNotifications } from "./features/authentication/authSlice";
 
 function App() {
 	const dispatch = useDispatch();
 	const primary = usePrimarySelector();
 	const theme = useThemeSelector();
+
+	const {
+		authentication: { token },
+	} = useAuth();
+
+	if (token) {
+		setAuthHeader(token);
+	}
+
+	useEffect(() => {
+		if (token) {
+			dispatch(loadAllUsers());
+			dispatch(loadPosts());
+			dispatch(loadNotifications());
+		}
+		setAxiosErrorHandler(dispatch);
+	}, [token, dispatch]);
+
 	return (
 		<div className={`app-container ${primary} ${theme}`}>
 			<div className="app-main">
