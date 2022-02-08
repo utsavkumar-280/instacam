@@ -9,7 +9,7 @@ export const loadFollowings = createAsyncThunk(
 	async (userName) => {
 		const {
 			data: { response },
-		} = await axios.get(`${API_URL}/user-profiles/${userName}`);
+		} = await axios.get(`${API_URL}/user-profiles/${userName}/following`);
 
 		return response;
 	}
@@ -40,4 +40,4 @@ const followingsSlice = createSlice({
 export default followingsSlice.reducer;
 export const { resetFollowings } = followingsSlice.actions;
 
-export const useFollowing = () => useSelector((state) => state.followings);
+export const useFollowings = () => useSelector((state) => state.followings);

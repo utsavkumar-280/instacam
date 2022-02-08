@@ -1,7 +1,37 @@
+import { useEffect } from "react";
+import { useParams } from "react-router";
+import { useDispatch } from "react-redux";
+
 import styles from "./FollowerUsers.module.css";
 import ProfileTile from "../ProfileTile";
+import {
+	loadFollowers,
+	removeAFollower,
+	resetFollowers,
+	useFollowers,
+} from "./followersSlice";
+import { useAuth } from "../../authSlice";
 
 const FollowerUsers = () => {
+	const { userName } = useParams();
+	const dispatch = useDispatch();
+	const { followersDetails } = useFollowers();
+
+	const {
+		authentication: { userName: viewerName, token },
+	} = useAuth();
+
+	useEffect(() => {
+		if (token) {
+			dispatch(loadFollowers(userName));
+		}
+		return () => {
+			dispatch(resetFollowers());
+		};
+	}, [token, dispatch, userName]);
+
+	console.log({ followersDetails });
+
 	return (
 		<section className={styles.userList_section}>
 			<section className={styles.users_list}>

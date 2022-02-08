@@ -14,6 +14,7 @@ import {
 	loadUserPosts,
 	resetUserProfile,
 } from "./profieSlice";
+import { followUsers } from "./followerUsers/followersSlice";
 
 export const Profile = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -86,7 +87,25 @@ export const Profile = () => {
 									</>
 								) : (
 									<>
-										<button>Follow</button>
+										<button
+											onClick={() =>
+												dispatch(
+													followUsers({
+														userName,
+														posts: postsDetails,
+														viewerDetails: {
+															viewerUserName,
+															viewerName,
+															viewerProfilePic,
+														},
+													})
+												)
+											}
+										>
+											{profileDetails?.followedByViewer
+												? "Following"
+												: "Follow"}
+										</button>
 									</>
 								)}
 							</div>

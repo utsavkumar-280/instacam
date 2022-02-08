@@ -9,7 +9,7 @@ export const loadFollowers = createAsyncThunk(
 	async (userName) => {
 		const {
 			data: { response },
-		} = await axios.get(`${API_URL}/user-profiles/${userName}`);
+		} = await axios.get(`${API_URL}/user-profiles/${userName}/followers`);
 
 		return response;
 	}
@@ -20,7 +20,7 @@ export const followUsers = createAsyncThunk(
 	async ({ userName, posts = [], viewerDetails }) => {
 		const {
 			data: { isAdded },
-		} = await axios.post(`${API_URL}/user-profiles/${userName}`);
+		} = await axios.post(`${API_URL}/user-profiles/${userName}/followers`);
 
 		return { isAdded, posts, viewerDetails };
 	}
@@ -82,4 +82,4 @@ const followersSlice = createSlice({
 export default followersSlice.reducer;
 export const { resetFollowers } = followersSlice.actions;
 
-export const useFollowerUsers = () => useSelector((state) => state.followers);
+export const useFollowers = () => useSelector((state) => state.followers);

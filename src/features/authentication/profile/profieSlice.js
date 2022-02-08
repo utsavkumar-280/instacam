@@ -145,8 +145,8 @@ const profileSlice = createSlice({
 
 		[followUsers.fulfilled]: (state, action) => {
 			action.payload.isAdded
-				? state.profileDetails.count.followers++
-				: state.profileDetails.count.followers--;
+				? state.profileDetails.followCount.followers++
+				: state.profileDetails.followCount.followers--;
 
 			state.profileDetails.followedByViewer = action.payload.isAdded;
 		},
