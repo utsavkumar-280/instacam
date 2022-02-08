@@ -25,6 +25,10 @@ export const Nav = () => {
 	const {
 		authentication: { name, userName, profilePic },
 	} = useAuth();
+
+	const isLinkActive = currentPath.includes("user-profile");
+
+	console.log(currentPath.includes("user-profile"));
 	return (
 		<div className={navStyles.container}>
 			<header className={navStyles.head_container}>
@@ -81,11 +85,13 @@ export const Nav = () => {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink
-							to="/user-profile/utsav"
-							end
-							className={navStyles.links}
-							activeClassName={navStyles.links_active}
+						<Link
+							to="/user-profile/yutsav"
+							className={
+								isLinkActive
+									? `${navStyles.links} ${navStyles.links_active}`
+									: `${navStyles.links} `
+							}
 						>
 							{currentPath === "/user-profile/utsav" ? (
 								<UserCircleIcon className={navStyles.link_icon} />
@@ -93,7 +99,7 @@ export const Nav = () => {
 								<UserCircleIconOutline className={navStyles.link_icon} />
 							)}
 							Profile
-						</NavLink>
+						</Link>
 					</li>
 					<li>
 						<NavLink
@@ -122,7 +128,7 @@ export const Nav = () => {
 			</nav>
 
 			<footer className={navStyles.footer_container}>
-				<NavLink to="/user-profile" className={navStyles.nav_user}>
+				<NavLink to="/user-profile/yutsav" className={navStyles.nav_user}>
 					<img
 						src={profilePic}
 						alt="user_img"
