@@ -9,6 +9,7 @@ export const loadAllUsers = createAsyncThunk("users/loadAllUsers", async () => {
 	const {
 		data: { response },
 	} = await axios.get(`${API_URL}/user-profiles`);
+	console.log(response);
 	return response;
 });
 

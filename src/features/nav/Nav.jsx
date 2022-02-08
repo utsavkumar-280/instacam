@@ -128,7 +128,10 @@ export const Nav = () => {
 			</nav>
 
 			<footer className={navStyles.footer_container}>
-				<NavLink to="/user-profile/yutsav" className={navStyles.nav_user}>
+				<NavLink
+					to={`/user-profile/${userName}`}
+					className={navStyles.nav_user}
+				>
 					<img
 						src={profilePic}
 						alt="user_img"

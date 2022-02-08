@@ -6,6 +6,7 @@ import followersReducer from "../features/authentication/profile/followerUsers/f
 import followingsReducer from "../features/authentication/profile/followingUsers/followingsSlice";
 import postsReducer from "../features/home/posts/postsSlice";
 import displayReducer from "../features/display/displaySlice";
+import usersReducer from "../features/explore/usersSlice";
 
 export const store = configureStore({
 	reducer: {
@@ -15,5 +16,6 @@ export const store = configureStore({
 		followings: followingsReducer,
 		posts: postsReducer,
 		display: displayReducer,
+		users: usersReducer,
 	},
 });
