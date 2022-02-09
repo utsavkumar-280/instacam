@@ -15,6 +15,7 @@ import {
 	resetUserProfile,
 } from "./profieSlice";
 import { followUsers } from "./followerUsers/followersSlice";
+import { locationTextFormatter, websiteTextFormatter } from "../../utils";
 
 export const Profile = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,6 +42,12 @@ export const Profile = () => {
 		return () => dispatch(resetUserProfile());
 	}, [userName, dispatch]);
 
+	const formattedLocation = locationTextFormatter(profileDetails?.location);
+
+	const formattedWebsite = websiteTextFormatter(profileDetails?.website);
+
+	console.log({ formattedLocation, formattedWebsite });
+
 	return (
 		<div className={profileStyles.container}>
 			{profileDetails && (
@@ -53,14 +60,9 @@ export const Profile = () => {
 					</header>
 					<section className={profileStyles.profile_container}>
 						<div className={profileStyles.profile_pic_container}>
-							<div
-								style={{
-									backgroundImage: `url("${profileDetails?.coverPic}")`,
-									backgroundPosition: "center",
-									backgroundRepeat: "no-repeat",
-									backgroundSize: "cover",
-									transition: "all 0.25s ease",
-								}}
+							<img
+								src={profileDetails?.coverPic}
+								alt="coverPic"
 								className={profileStyles.profile_cover}
 							/>
 							<img
@@ -136,7 +138,7 @@ export const Profile = () => {
 											<HiOutlineLocationMarker
 												className={profileStyles.profile_icon}
 											/>
-											<span>{profileDetails?.location}</span>
+											<span>{formattedLocation}</span>
 										</div>
 									)}
 
@@ -148,7 +150,7 @@ export const Profile = () => {
 												target="_blank"
 												rel="noopener noreferrer"
 											>
-												{profileDetails?.website}
+												{formattedWebsite}
 											</a>
 										</div>
 									)}
