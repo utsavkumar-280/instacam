@@ -28,7 +28,6 @@ export const Nav = () => {
 
 	const isLinkActive = currentPath.includes("user-profile");
 
-	console.log(currentPath.includes("user-profile"));
 	return (
 		<div className={navStyles.container}>
 			<header className={navStyles.head_container}>
@@ -86,14 +85,14 @@ export const Nav = () => {
 					</li>
 					<li>
 						<Link
-							to="/user-profile/yutsav"
+							to={`/user-profile/${userName}`}
 							className={
 								isLinkActive
 									? `${navStyles.links} ${navStyles.links_active}`
 									: `${navStyles.links} `
 							}
 						>
-							{currentPath === "/user-profile/utsav" ? (
+							{currentPath === `/user-profile/${userName}` ? (
 								<UserCircleIcon className={navStyles.link_icon} />
 							) : (
 								<UserCircleIconOutline className={navStyles.link_icon} />

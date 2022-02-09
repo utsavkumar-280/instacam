@@ -62,8 +62,6 @@ export const Explore = () => {
 
 	const searchedUsers = searchUsers(users, inputSearch);
 
-	console.log({ searchedUsers });
-
 	return (
 		<div className={exploreStyles.container}>
 			<header className={exploreStyles.head_container}>

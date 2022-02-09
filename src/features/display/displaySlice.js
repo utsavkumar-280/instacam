@@ -10,7 +10,7 @@ const getSavedDisplay = () => {
 	const savedPrimary = JSON.parse(localStorage.getItem("savedPrimary"));
 	const defaultDisplay = {
 		primaryColor: savedPrimary?.primaryColor || "prBlue",
-		theme: savedTheme?.theme || "default",
+		theme: savedTheme?.theme || "dim",
 	};
 	return defaultDisplay;
 };

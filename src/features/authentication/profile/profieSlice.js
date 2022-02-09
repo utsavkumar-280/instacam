@@ -155,7 +155,7 @@ const profileSlice = createSlice({
 		},
 
 		[removeAFollower.fulfilled]: (state, action) => {
-			state.profileDetails.count.followers--;
+			state.profileDetails.followCount.followers--;
 		},
 		[removeAFollower.rejected]: (state, action) => {
 			console.log(action.error.message);

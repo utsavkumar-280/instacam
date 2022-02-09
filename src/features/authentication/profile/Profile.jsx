@@ -41,7 +41,6 @@ export const Profile = () => {
 		return () => dispatch(resetUserProfile());
 	}, [userName, dispatch]);
 
-	console.log({ currentPath, viewerUserName, userName });
 	return (
 		<div className={profileStyles.container}>
 			{profileDetails && (

@@ -16,8 +16,13 @@ import {
 	SearchIcon as SearchIconOutline,
 } from "@heroicons/react/outline";
 
+import { useAuth } from "../authentication/authSlice";
+
 export const PhoneNav = () => {
 	const currentPath = useLocation().pathname;
+	const {
+		authentication: { name, userName, profilePic },
+	} = useAuth();
 	return (
 		<div className={navStyles.container}>
 			<ul className={navStyles.link_list}>
@@ -71,7 +76,7 @@ export const PhoneNav = () => {
 				</li>
 				<li>
 					<NavLink
-						to="/user-profile/utsav"
+						to={`/user-profile/${userName}`}
 						end
 						activeClassName={navStyles.link_icons_active}
 					>
