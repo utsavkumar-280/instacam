@@ -4,9 +4,64 @@ import { FiSearch, FiX } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 import UserTile from "./UserTile";
+import { useUsers } from "./usersSlice";
+import { useAuth } from "../authentication/authSlice";
+
+function shuffle(array) {
+	for (let i = array.length - 1; i > 0; i--) {
+		let j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
+	return array;
+}
 
 export const Explore = () => {
 	const [inputSearch, setInputSearch] = useState("");
+	const { users } = useUsers();
+	const {
+		authentication: { userName },
+	} = useAuth();
+
+	const followSuggestions = (users) => {
+		let nonFollowers = users.filter(
+			(user) => !user.followedByViewer && userName !== user.userName
+		);
+
+		nonFollowers = shuffle(nonFollowers);
+		if (nonFollowers.length > 4) {
+			return [
+				nonFollowers[1],
+				nonFollowers[0],
+				nonFollowers[4],
+				nonFollowers[3],
+				nonFollowers[2],
+			];
+		}
+		return nonFollowers;
+	};
+
+	const suggestedUsers = followSuggestions(users);
+
+	const searchUsers = (users, searchKeyword) => {
+		const searchedUpper = searchKeyword.toUpperCase();
+
+		if (searchKeyword) {
+			const filteredUsers = users.filter(({ userName, name }) => {
+				const userNameUpper = userName.toUpperCase();
+				const nameUpper = name.toUpperCase();
+
+				return (
+					userNameUpper.includes(searchedUpper) ||
+					nameUpper.includes(searchedUpper)
+				);
+			});
+			return filteredUsers;
+		}
+		return [];
+	};
+
+	const searchedUsers = searchUsers(users, inputSearch);
+
 	return (
 		<div className={exploreStyles.container}>
 			<header className={exploreStyles.head_container}>
@@ -35,28 +90,31 @@ export const Explore = () => {
 				{inputSearch ? (
 					<div className={exploreStyles.userList_container_alt}>
 						<section className={exploreStyles.users_list_alt}>
-							<Link to="/user-profile" className={exploreStyles.users_alt}>
-								<img
-									src="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
-									alt="post_user_pic"
-									className={exploreStyles.users_pic}
-								/>
-								<section className={exploreStyles.users_info}>
-									<h1>Utsav Kumar</h1>
-									<h2>@utsavkumar280</h2>
-								</section>
-							</Link>
-							<Link to="/user-profile" className={exploreStyles.users_alt}>
-								<img
-									src="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
-									alt="post_user_pic"
-									className={exploreStyles.users_pic}
-								/>
-								<section className={exploreStyles.users_info}>
-									<h1>Utsav Kumar</h1>
-									<h2>@utsavkumar280</h2>
-								</section>
-							</Link>
+							{searchedUsers.length !== 0 ? (
+								searchedUsers.map((user) => (
+									<Link
+										to={`/user-profile/${user?.userName}`}
+										key={user?._id}
+										className={exploreStyles.users_alt}
+									>
+										<img
+											src={user?.profilePic}
+											alt="post_user_pic"
+											className={exploreStyles.users_pic}
+										/>
+										<section className={exploreStyles.users_info}>
+											<h1>{user?.name}</h1>
+											<h2>{`@${user?.userName}`}</h2>
+										</section>
+									</Link>
+								))
+							) : (
+								<div className={exploreStyles.users_empty}>
+									<section className={exploreStyles.users_info}>
+										<h1>No user found</h1>
+									</section>
+								</div>
+							)}
 						</section>
 					</div>
 				) : (
@@ -65,42 +123,15 @@ export const Explore = () => {
 							<p>Users you might like</p>
 						</header>
 						<section className={exploreStyles.users_list}>
-							<UserTile
-								to="/user-profile"
-								pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
-								name="Utsav Kumar"
-								username="@utsavkumar280"
-							/>
-							<UserTile
-								to="/user-profile"
-								pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
-								name="Utsav Kumar"
-								username="@utsavkumar280"
-							/>
-							<UserTile
-								to="/user-profile"
-								pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
-								name="Utsav Kumar"
-								username="@utsavkumar280"
-							/>
-							<UserTile
-								to="/user-profile"
-								pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
-								name="Utsav Kumar"
-								username="@utsavkumar280"
-							/>
-							<UserTile
-								to="/user-profile"
-								pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
-								name="Utsav Kumar"
-								username="@utsavkumar280"
-							/>
-							<UserTile
-								to="/user-profile"
-								pic="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
-								name="Utsav Kumar"
-								username="@utsavkumar280"
-							/>
+							{suggestedUsers.map((user) => (
+								<UserTile
+									key={user._id}
+									to={`/user-profile/${user?.userName}`}
+									pic={user?.profilePic}
+									name={user?.name}
+									username={user?.userName}
+								/>
+							))}
 						</section>
 					</div>
 				)}

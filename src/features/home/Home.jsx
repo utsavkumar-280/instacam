@@ -4,7 +4,7 @@ import axios from "axios";
 import { CLOUDINARY_URL, CLOUDINARY_PRESET } from "../utils";
 import homeStyles from "./Home.module.css";
 import { AddPost } from "./AddPost/index";
-import { PostList } from "./PostList";
+import { PostList } from "./posts/PostList";
 import PreviewModal from "../authentication/profile/PreviewModal";
 
 export const Home = () => {

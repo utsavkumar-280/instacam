@@ -8,14 +8,9 @@
 	top: 0;
 	z-index: 1;
 	height: var(--head-height);
-
 	padding: 1rem 2rem;
 	background-color: var(--background-color);
 	border-bottom: 0.1rem solid var(--line);
-	/* display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: center; */
 	display: grid;
 	grid-template-columns: auto;
 	grid-template-rows: 60% 40%;
@@ -39,8 +34,6 @@
 
 .profile_container {
 	border-bottom: 0.1rem solid var(--line);
-	display: grid;
-	grid-template-rows: 6fr 4fr;
 	transition: all 0.25s ease;
 }
 
@@ -48,6 +41,7 @@
 	display: grid;
 	grid-template-rows: 7fr 3fr;
 	position: relative;
+	min-height: 275px;
 }
 
 .profile_pic {
@@ -99,8 +93,6 @@
 .profile_info {
 	padding: 0rem 1.5rem 0.5rem 1.5rem;
 	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
 	flex-direction: column;
 }
 
@@ -193,11 +185,6 @@
 }
 
 @media screen and (max-width: 440px) {
-	.profile_container {
-		display: grid;
-		grid-template-rows: 5.05fr 4.95fr;
-	}
-
 	.profile_pic_container {
 		display: grid;
 		grid-template-rows: 6fr 4fr;

@@ -70,6 +70,12 @@
 	border: 0.175rem solid var(--primary-color);
 	transition: all 0.25s ease;
 }
+.inpurt_error {
+	font-size: 1.25rem;
+	font-weight: 500;
+	letter-spacing: 0.05rem;
+	color: red;
+}
 
 .form_label {
 	font-size: 1.6rem;
@@ -208,9 +214,7 @@ select:-webkit-autofill:focus {
 	border: none;
 	-webkit-text-fill-color: var(--head-secondary);
 	box-shadow: 0 0 0px 1000px var(--background-color) inset;
-	padding: 1.5rem;
 	-webkit-box-shadow: 0 0 0px 1000px var(--background-color) inset;
-	padding: 1.5rem;
 	font-family: "Poppins", sans-serif;
 	transition: all 0.25s ease;
 }

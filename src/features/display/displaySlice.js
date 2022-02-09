@@ -10,7 +10,7 @@ const getSavedDisplay = () => {
 	const savedPrimary = JSON.parse(localStorage.getItem("savedPrimary"));
 	const defaultDisplay = {
 		primaryColor: savedPrimary?.primaryColor || "prBlue",
-		theme: savedTheme?.theme || "default",
+		theme: savedTheme?.theme || "dim",
 	};
 	return defaultDisplay;
 };
@@ -42,7 +42,5 @@ export const usePrimarySelector = () =>
 
 export const useThemeSelector = () =>
 	useSelector((state) => state.display.theme);
-
-export const { togglePrimary, toggleTheme } = displaySlice.actions;
 
 export default displaySlice.reducer;
