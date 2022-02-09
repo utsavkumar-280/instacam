@@ -17,7 +17,7 @@ export const FollowingUsers = () => {
 	const { followingsDetails, followingsStatus } = useFollowings();
 
 	const {
-		authentication: { userName: viewerName, token },
+		authentication: { token },
 	} = useAuth();
 
 	useEffect(() => {

@@ -13,7 +13,7 @@ const FollowerUsers = () => {
 	const { followersDetails, followersStatus } = useFollowers();
 
 	const {
-		authentication: { userName: viewerName, token },
+		authentication: { token },
 	} = useAuth();
 
 	useEffect(() => {
