@@ -39,20 +39,27 @@ const followersSlice = createSlice({
 	name: "followers",
 	initialState: {
 		followersDetails: [],
+		followersStatus: "idle",
 	},
 	reducers: {
 		resetFollowers: (state) => {
 			state.followersDetails = [];
+			state.followersStatus = "idle";
 		},
 	},
 	extraReducers: {
 		[loadFollowers.fulfilled]: (state, action) => {
 			if (action.payload) {
 				state.followersDetails = action.payload;
+				state.followersStatus = "success";
 			}
+		},
+		[loadFollowers.pending]: (state, action) => {
+			state.followersStatus = "loading";
 		},
 		[loadFollowers.rejected]: (state, action) => {
 			console.log(action.error.message);
+			state.followersStatus = "failure";
 		},
 
 		[followUsers.fulfilled]: (state, action) => {
