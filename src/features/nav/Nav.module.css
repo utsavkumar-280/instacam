@@ -148,7 +148,9 @@
 
 .nav_user_img {
 	width: 5rem;
-	height: auto;
+	height: 5rem;
+	object-fit: cover;
+	object-position: 50% 50%;
 	border-radius: 50%;
 	transition: all 0.25s ease;
 }
