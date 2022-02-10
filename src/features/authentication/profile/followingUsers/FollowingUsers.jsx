@@ -29,7 +29,6 @@ export const FollowingUsers = () => {
 		};
 	}, [token, dispatch, userName]);
 
-	console.log({ followingsDetails });
 	return (
 		followingsStatus === "success" && (
 			<section className={styles.userList_section}>

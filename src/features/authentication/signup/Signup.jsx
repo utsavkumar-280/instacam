@@ -78,7 +78,6 @@ export const Signup = () => {
 						})}
 						onSubmit={(values, { setSubmitting }) => {
 							setTimeout(() => {
-								console.log(values);
 								signup(values);
 								setSubmitting(false);
 							}, 0);

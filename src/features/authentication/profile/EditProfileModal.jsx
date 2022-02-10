@@ -72,8 +72,6 @@ const EditProfileModal = ({ setIsModalOpen }) => {
 			});
 			const { delete_token, url } = await response.json();
 
-			console.log({ delete_token, url });
-
 			setToken(delete_token);
 			setInput(url);
 			setPreview("");
@@ -149,13 +147,6 @@ const EditProfileModal = ({ setIsModalOpen }) => {
 		}
 	};
 
-	console.log({
-		inputCover,
-		inputProfile,
-		inputBio,
-		inputLocation,
-		inputWebsite,
-	});
 	return (
 		<div className={style.main_conatiner}>
 			<div className={style.main_content}>

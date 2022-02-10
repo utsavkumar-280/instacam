@@ -40,7 +40,6 @@ const PreviewModal = ({
 							className={style.update_cta}
 							onClick={() => {
 								if (file) {
-									console.log({ file });
 									uploadHandler(
 										file,
 										setFile,

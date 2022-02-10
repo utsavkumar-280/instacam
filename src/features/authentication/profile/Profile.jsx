@@ -46,8 +46,6 @@ export const Profile = () => {
 
 	const formattedWebsite = websiteTextFormatter(profileDetails?.website);
 
-	console.log({ formattedLocation, formattedWebsite });
-
 	return (
 		<div className={profileStyles.container}>
 			{profileDetails && (

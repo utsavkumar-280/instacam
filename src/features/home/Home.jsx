@@ -68,8 +68,6 @@ export const Home = () => {
 			});
 			const { delete_token, url } = await response.json();
 
-			console.log({ delete_token, url });
-
 			setToken(delete_token);
 			setInput(url);
 			setPreview("");

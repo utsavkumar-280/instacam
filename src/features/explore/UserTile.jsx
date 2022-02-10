@@ -8,7 +8,7 @@ const UserTile = ({ to, pic, name, username }) => {
 			<section className={exploreStyles.users_info_container}>
 				<section className={exploreStyles.users_info}>
 					<h1>{name}</h1>
-					<h2>{username}</h2>
+					<h2>{`@${username}`}</h2>
 				</section>
 			</section>
 		</Link>

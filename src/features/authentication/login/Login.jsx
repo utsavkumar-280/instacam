@@ -45,7 +45,6 @@ export const Login = () => {
 					})}
 					onSubmit={(values, { setSubmitting }) => {
 						setTimeout(() => {
-							console.log(values);
 							login(values);
 							setSubmitting(false);
 						}, 400);

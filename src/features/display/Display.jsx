@@ -15,7 +15,7 @@ export const Display = () => {
 	const dispatch = useDispatch();
 	const primary = usePrimarySelector();
 	const theme = useThemeSelector();
-	console.log({ primary, theme });
+
 	return (
 		<div className={displayStyles.container}>
 			<header className={displayStyles.head_container}>
