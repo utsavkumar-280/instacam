@@ -9,14 +9,24 @@ import {
 	deleteUserPost,
 } from "../../authentication/profile/profieSlice";
 import { openLikesModal } from "./postsSlice";
+import { useAuth } from "../../authentication/authSlice";
+import { useProfile } from "../../authentication/profile/profieSlice";
 
 export const PostCard = ({ deleteBtn, post, updatePr }) => {
 	const dispatch = useDispatch();
-	const isLikedpost = true;
-	console.log({ updatePr });
+	const { authentication } = useAuth();
+	const { profileDetails } = useProfile();
+
+	const deleteable = authentication?.userName === profileDetails?.userName;
+
+	const isLikedpost = post?.totalLikes >= 1;
+	console.log(
+		{ authentication, profileDetails },
+		authentication?.userName === profileDetails?.userName
+	);
 	return (
 		<div className={homeStyles.main_post}>
-			{(isLikedpost || deleteBtn) && (
+			{(isLikedpost || deleteable) && (
 				<div className={homeStyles.post_layout}>
 					<section className={homeStyles.likes_container}>
 						<div className={homeStyles.likes_content}>
@@ -24,8 +34,12 @@ export const PostCard = ({ deleteBtn, post, updatePr }) => {
 						</div>
 					</section>
 					<section className={homeStyles.post_content}>
-						<p>{`Liked by ${post?.totalLikes} people`}</p>
-						{deleteBtn && (
+						<p>
+							{isLikedpost
+								? `Liked by ${post?.totalLikes} people`
+								: "Be the first to like the post"}
+						</p>
+						{deleteable && (
 							<div
 								className={homeStyles.post_cta_icon_container}
 								onClick={() => dispatch(deleteUserPost({ postId: post?._id }))}
