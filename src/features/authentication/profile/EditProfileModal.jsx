@@ -1,23 +1,26 @@
 import { useState } from "react";
-import axios from "axios";
 import { XIcon } from "@heroicons/react/solid";
 import { AiOutlineCamera } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 
 import style from "./Modal.module.css";
 import PreviewModal from "./PreviewModal";
 import { CLOUDINARY_URL, CLOUDINARY_PRESET } from "../../utils";
+import { useProfile, updateProfile } from "./profieSlice";
 
 const EditProfileModal = ({ setIsModalOpen }) => {
-	const initalInput = [
-		"https://i.postimg.cc/j2KQHrWL/hero1.jpg",
-		"https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg",
-	];
-	const [inputCover, setInputCover] = useState(initalInput[0]);
-	const [inputProfile, setInputProfile] = useState(initalInput[1]);
+	const [isUpdating, setIsUpdating] = useState(false);
+	const dispatch = useDispatch();
+	const {
+		profileDetails: { userName, coverPic, profilePic, bio, location, website },
+	} = useProfile();
 
-	const [inputBio, setInputBio] = useState("");
-	const [inputLocation, setInputLocation] = useState("");
-	const [inputWebsite, setInputWebsite] = useState("");
+	const [inputCover, setInputCover] = useState(coverPic);
+	const [inputProfile, setInputProfile] = useState(profilePic);
+
+	const [inputBio, setInputBio] = useState(bio);
+	const [inputLocation, setInputLocation] = useState(location);
+	const [inputWebsite, setInputWebsite] = useState(website);
 
 	const [coverPreview, setCoverPreview] = useState("");
 	const [profilePreview, setProfilePreview] = useState("");
@@ -63,9 +66,11 @@ const EditProfileModal = ({ setIsModalOpen }) => {
 			formData.append("file", file);
 			formData.append("upload_preset", CLOUDINARY_PRESET);
 
-			const {
-				data: { delete_token, url },
-			} = await axios.post(`${CLOUDINARY_URL}/image/upload`, formData);
+			const response = await fetch(`${CLOUDINARY_URL}/image/upload`, {
+				method: "POST",
+				body: formData,
+			});
+			const { delete_token, url } = await response.json();
 
 			console.log({ delete_token, url });
 
@@ -86,15 +91,21 @@ const EditProfileModal = ({ setIsModalOpen }) => {
 			formData.append("upload_preset", CLOUDINARY_PRESET);
 			if (type === "cover") {
 				formData.append("token", coverDeleteToken);
-				await axios.post(`${CLOUDINARY_URL}/delete_by_token`, formData);
+				await fetch(`${CLOUDINARY_URL}/delete_by_token`, {
+					method: "POST",
+					body: formData,
+				});
 				setToken("");
-				setInputCover(initalInput[0]);
+				setInputCover(coverPic);
 			}
 			if (type === "profile") {
 				formData.append("token", profileDeleteToken);
-				await axios.post(`${CLOUDINARY_URL}/delete_by_token`, formData);
+				await fetch(`${CLOUDINARY_URL}/delete_by_token`, {
+					method: "POST",
+					body: formData,
+				});
 				setToken("");
-				setInputProfile(initalInput[1]);
+				setInputProfile(profilePic);
 			}
 		} catch (error) {
 			console.log(error);
@@ -109,12 +120,42 @@ const EditProfileModal = ({ setIsModalOpen }) => {
 		if (profileDeleteToken) {
 			await deleteHandler("profile", setProfileDeleteToken);
 		}
-		setInputBio("");
-		setInputLocation("");
-		setInputWebsite("");
+		setInputBio(bio);
+		setInputLocation(location);
+		setInputWebsite(website);
 		setIsModalOpen(false);
 	};
 
+	const updateHandler = async () => {
+		try {
+			setIsUpdating(true);
+			const updateProfileResponse = await dispatch(
+				updateProfile({
+					userName,
+					inputCover,
+					inputProfile,
+					inputBio,
+					inputLocation,
+					inputWebsite,
+				})
+			);
+
+			if (updateProfileResponse.meta.requestStatus === "fulfilled") {
+				setIsUpdating(false);
+				setIsModalOpen(false);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	console.log({
+		inputCover,
+		inputProfile,
+		inputBio,
+		inputLocation,
+		inputWebsite,
+	});
 	return (
 		<div className={style.main_conatiner}>
 			<div className={style.main_content}>
@@ -215,7 +256,15 @@ const EditProfileModal = ({ setIsModalOpen }) => {
 						</div>
 					</section>
 					<footer className={style.footer}>
-						<button className={style.update_cta}>Update</button>
+						<button
+							className={style.update_cta}
+							onClick={() => {
+								document.body.style.overflow = "overlay";
+								updateHandler();
+							}}
+						>
+							{isUpdating ? "Updating..." : "Update"}
+						</button>
 						<button
 							className={style.cancel_cta}
 							onClick={() => {

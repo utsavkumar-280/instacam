@@ -59,10 +59,10 @@ export const likeUserPost = createAsyncThunk(
 	"posts/likeUserPost",
 	async ({ postId, updateProfile = false }) => {
 		const {
-			data: { isliked },
+			data: { isLiked },
 		} = await axios.post(`${API_URL}/posts/${postId}/likedby`);
-
-		return { postId, isliked, updateProfile };
+		console.log({ isLiked });
+		return { postId, isLiked, updateProfile };
 	}
 );
 

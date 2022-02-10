@@ -24,6 +24,85 @@
 	color: var(--head-primary);
 	transition: all 0.25s ease;
 }
+.notification_list_container {
+	width: 100%;
+	padding: 2.5rem 4rem;
+	background-color: var(--background-color);
+	transition: all 0.25s ease;
+}
+
+.notification_list {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--background-card);
+	border-radius: 2rem;
+}
+.notification_container {
+	display: grid;
+	grid-template-columns: 1fr 9fr;
+	padding: 1.5rem 2rem;
+	border-bottom: 0.1rem solid var(--line);
+	transition: all 0.25s ease;
+	text-decoration: none;
+}
+
+.notification_container:hover {
+	background-color: var(--background-card-hover);
+	transition: all 0.25s ease;
+}
+.notification_container:first-child {
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
+}
+
+.notification_container:last-child {
+	border-bottom: 0.1rem solid transparent;
+	border-bottom-left-radius: 2rem;
+	border-bottom-right-radius: 2rem;
+}
+
+.pfp {
+	width: 5rem;
+	height: 5rem;
+	object-fit: cover;
+	object-position: 50% 50%;
+	border-radius: 50%;
+	transition: all 0.25s ease;
+}
+
+.notification_info {
+	padding: 0 0 0 1rem;
+	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+}
+.notification_info h1 {
+	font-size: 1.7rem;
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--head-primary);
+	transition: all 0.25s ease;
+}
+.notification_info h2 {
+	font-size: 1.325rem;
+	font-weight: 400;
+	text-decoration: none;
+	margin-left: 0.45rem;
+	color: var(--head-secondary);
+	transition: all 0.25s ease;
+}
+
+.notification {
+	font-size: 1.5rem;
+	font-weight: 400;
+	text-decoration: none;
+	color: var(--primary-color);
+	transition: all 0.25s ease;
+}
+.user_info {
+	display: flex;
+	align-items: baseline;
+}
 
 @media screen and (max-width: 768px) {
 	.head_container {

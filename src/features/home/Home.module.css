@@ -117,7 +117,9 @@
 }
 .user_pic {
 	width: 5rem;
-	height: auto;
+	height: 5rem;
+	object-fit: cover;
+	object-position: 50% 50%;
 	border-radius: 50%;
 	transition: all 0.25s ease;
 }
@@ -155,10 +157,11 @@
 	transition: all 0.25s ease;
 }
 .post_cta_container {
-	margin: 0 0 1rem 0;
+	/* margin: 0 0 1rem 0; */
 	display: flex;
 	align-items: center;
 }
+
 .post_cta {
 	background-color: transparent;
 	font-size: 2rem;
@@ -183,6 +186,38 @@
 	transition: all 0.25s ease;
 }
 .post_cta + div {
+	padding: 0.5rem 0.5rem 0.5rem 0;
+	background-color: transparent;
+	color: var(--head-secondary);
+	font-size: 1.4rem;
+	transition: all 0.25s ease;
+}
+
+.liked_post_cta {
+	background-color: transparent;
+	font-size: 2rem;
+	color: var(--primary-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	padding: 0.5rem;
+	cursor: pointer;
+	transition: all 0.25s ease;
+}
+.liked_post_cta:hover {
+	background-color: var(--primary-hover);
+	font-size: 2rem;
+
+	transition: all 0.25s ease;
+}
+.liked_post_cta:hover + div {
+	background-color: transparent;
+	color: var(--primary-color);
+	transition: all 0.25s ease;
+}
+.liked_post_cta + div {
+	padding: 0.5rem 0.5rem 0.5rem 0;
 	background-color: transparent;
 	color: var(--head-secondary);
 	font-size: 1.4rem;
@@ -194,13 +229,7 @@
 	width: 100%;
 	height: auto;
 }
-.form_conatiner {
-	padding: 1rem;
-	background-color: var(--background-color);
-	display: flex;
-	flex-direction: column;
-	transition: all 0.25s ease;
-}
+
 .form_img_conatiner > img {
 	width: 100%;
 	border-radius: 1.25rem;
@@ -240,12 +269,19 @@
 	color: var(--primary-color);
 	transition: all 0.25s ease;
 }
+.form_conatiner {
+	padding: 1rem;
+	background-color: var(--background-color);
+	display: flex;
+	flex-direction: column;
+	transition: all 0.25s ease;
+}
 
 .form_conatiner textarea {
 	resize: none;
 	width: 100%;
 	min-height: 10vh;
-	border: none;
+	border: 0.2rem solid var(--background-color);
 	outline: none;
 	border-radius: 1rem;
 	padding: 0.75rem;
@@ -255,19 +291,40 @@
 	letter-spacing: 0.05rem;
 	color: var(--head-secondary);
 	background-color: var(--background-color);
+	transition: all 0.25s ease;
 }
+.form_conatiner_alt textarea {
+	border: 0.2rem solid red;
+	transition: all 0.25s ease;
+}
+.caption_error {
+	margin: 0.2rem 0;
+	color: red;
+	font-size: 1.125rem;
+	letter-spacing: 0.05rem;
+}
+
+.form_conatiner textarea:focus,
+.form_conatiner_alt textarea:focus {
+	border: 0.2rem solid var(--primary-color);
+	transition: all 0.25s ease;
+}
+
 .form_conatiner textarea::-webkit-input-placeholder {
 	/* Edge */
 	color: var(--head-secondary);
+	transition: all 0.25s ease;
 }
 
 .form_conatiner textarea:-ms-input-placeholder {
 	/* Internet Explorer 10-11 */
 	color: var(--head-secondary);
+	transition: all 0.25s ease;
 }
 
 .form_conatiner textarea::placeholder {
 	color: var(--head-secondary);
+	transition: all 0.25s ease;
 }
 .form_cta_container {
 	display: flex;

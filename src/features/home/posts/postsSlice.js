@@ -23,7 +23,7 @@ export const createPost = createAsyncThunk(
 	async ({ post }) => {
 		const {
 			data: { response },
-		} = await axios.get(`${API_URL}/posts`, { ...post });
+		} = await axios.post(`${API_URL}/posts`, { ...post });
 
 		return response;
 	}
@@ -57,11 +57,14 @@ const postsSlice = createSlice({
 	extraReducers: {
 		[loadPosts.fulfilled]: (state, action) => {
 			state.posts = action.payload;
-			state.status = "succeeded";
+			state.status = "success";
+		},
+		[loadPosts.pending]: (state, action) => {
+			state.status = "loading";
 		},
 		[loadPosts.rejected]: (state, action) => {
 			console.log(action.error.message);
-			state.status = "failed";
+			state.status = "failure";
 		},
 
 		[createPost.fulfilled]: (state, action) => {

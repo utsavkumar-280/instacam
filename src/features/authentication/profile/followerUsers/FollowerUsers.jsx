@@ -10,10 +10,10 @@ import { useAuth } from "../../authSlice";
 const FollowerUsers = () => {
 	const { userName } = useParams();
 	const dispatch = useDispatch();
-	const { followersDetails } = useFollowers();
+	const { followersDetails, followersStatus } = useFollowers();
 
 	const {
-		authentication: { userName: viewerName, token },
+		authentication: { token },
 	} = useAuth();
 
 	useEffect(() => {
@@ -26,29 +26,31 @@ const FollowerUsers = () => {
 	}, [token, dispatch, userName]);
 
 	return (
-		<section className={styles.userList_section}>
-			<section className={styles.users_list}>
-				{followersDetails?.length === 0 ? (
-					<div className={styles.users_empty}>
-						<section className={styles.users_info_alt}>
-							<h1>No followers</h1>
-						</section>
-					</div>
-				) : (
-					followersDetails?.map((follower) => (
-						<ProfileTile
-							key={follower._id}
-							to={`/user-profile/${follower?.userName}`}
-							pic={follower?.profilePic}
-							name={`${follower?.userId?.firstname} ${follower?.userId?.lastname}`}
-							username={`@${follower?.userName}`}
-							isForFollower
-							followerUserName={follower?.userName}
-						/>
-					))
-				)}
+		followersStatus === "success" && (
+			<section className={styles.userList_section}>
+				<section className={styles.users_list}>
+					{followersDetails?.length === 0 ? (
+						<div className={styles.users_empty}>
+							<section className={styles.users_info_alt}>
+								<h1>No followers</h1>
+							</section>
+						</div>
+					) : (
+						followersDetails?.map((follower) => (
+							<ProfileTile
+								key={follower._id}
+								to={`/user-profile/${follower?.userName}`}
+								pic={follower?.profilePic}
+								name={`${follower?.userId?.firstname} ${follower?.userId?.lastname}`}
+								username={`@${follower?.userName}`}
+								isForFollower
+								followerUserName={follower?.userName}
+							/>
+						))
+					)}
+				</section>
 			</section>
-		</section>
+		)
 	);
 };
 
