@@ -31,3 +31,39 @@ export const websiteTextFormatter = (string) => {
 	}
 	return string;
 };
+
+export const postInitialState = {
+	caption: "",
+	captionError: "",
+};
+
+export const postFormReducer = (state, { type, payload }) => {
+	switch (type) {
+		case "SET_CAPTION": {
+			return { ...state, caption: payload.caption };
+		}
+		case "SET_CAPTION_ERROR": {
+			return { ...state, captionError: payload.error };
+		}
+		case "CLEAR_ERROR": {
+			return { ...state, captionError: "" };
+		}
+		case "CLEAR_FORM": {
+			return postInitialState;
+		}
+
+		default:
+			throw new Error("Invalid Action");
+	}
+};
+
+export const setCaption = ({ caption }) => ({
+	type: "SET_CAPTION",
+	payload: { caption },
+});
+export const setCaptionError = ({ error }) => ({
+	type: "SET_CAPTION_ERROR",
+	payload: { error },
+});
+export const clearError = () => ({ type: "CLEAR_ERROR" });
+export const clearForm = () => ({ type: "CLEAR_FORM" });

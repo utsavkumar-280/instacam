@@ -40,7 +40,7 @@ const PreviewModal = ({
 							className={style.update_cta}
 							onClick={() => {
 								if (file) {
-									console.log(file);
+									console.log({ file });
 									uploadHandler(
 										file,
 										setFile,
@@ -50,9 +50,6 @@ const PreviewModal = ({
 										setIsUploading,
 										isPost
 									);
-									// if (isPost) {
-									// 	document.body.style.overflow = "overlay";
-									// }
 								}
 							}}
 						>
