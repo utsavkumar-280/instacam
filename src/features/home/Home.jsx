@@ -68,8 +68,6 @@ export const Home = () => {
 			});
 			const { delete_token, url } = await response.json();
 
-			console.log({ delete_token, url });
-
 			setToken(delete_token);
 			setInput(url);
 			setPreview("");
@@ -135,7 +133,6 @@ export const Home = () => {
 		}
 	};
 
-	console.log({ inputImg, postImgPreview, postImgFile, delToken, formState });
 	return (
 		<div className={homeStyles.container}>
 			<header className={homeStyles.head_container}>

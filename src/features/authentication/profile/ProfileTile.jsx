@@ -21,8 +21,6 @@ const ProfileTile = ({
 
 	const { profileDetails } = useProfile();
 
-	console.log({ userName, followerUserName });
-
 	return isForFollower ? (
 		userName === profileDetails?.userName ? (
 			<div className={styles.users}>

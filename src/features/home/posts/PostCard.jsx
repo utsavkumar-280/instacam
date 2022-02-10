@@ -20,10 +20,7 @@ export const PostCard = ({ deleteBtn, post, updatePr }) => {
 	const deleteable = authentication?.userName === profileDetails?.userName;
 
 	const isLikedpost = post?.totalLikes >= 1;
-	console.log(
-		{ authentication, profileDetails },
-		authentication?.userName === profileDetails?.userName
-	);
+
 	return (
 		<div className={homeStyles.main_post}>
 			{(isLikedpost || deleteable) && (
