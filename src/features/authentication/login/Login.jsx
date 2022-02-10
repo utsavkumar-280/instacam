@@ -51,68 +51,83 @@ export const Login = () => {
 						}, 400);
 					}}
 				>
-					<Form className={loginStyles.form_field_container}>
-						<div className={loginStyles.input_control}>
-							<label htmlFor="email" className={loginStyles.form_label}>
-								Email Address
-							</label>
-							<div className={loginStyles.input_field_container}>
-								<Field
-									name="email"
-									type="email"
-									placeholder="Enter email"
-									className={loginStyles.input_field}
-								/>
-							</div>
-
-							<ErrorMessage name="email" className="form-error" />
-						</div>
-
-						<div className={loginStyles.input_control}>
-							<label htmlFor="password" className={loginStyles.form_label}>
-								Password
-							</label>
-							<div className={loginStyles.input_field_container}>
-								<span
-									className={`${loginStyles.input_grid} ${loginStyles.width100}`}
-								>
+					{(props) => (
+						<Form className={loginStyles.form_field_container}>
+							<div className={loginStyles.input_control}>
+								<label htmlFor="email" className={loginStyles.form_label}>
+									Email Address
+								</label>
+								<div className={loginStyles.input_field_container}>
 									<Field
-										name="password"
-										placeholder="Enter password"
-										className={loginStyles.input_pass_field}
-										type={isHidden ? "password" : "text"}
+										name="email"
+										type="email"
+										placeholder="Enter email"
+										className={loginStyles.input_field}
 									/>
-									<button
-										type="button"
-										className={loginStyles.input_pass_cta}
-										onClick={() => setIsHidden((isHidden) => !isHidden)}
-									>
-										{isHidden ? (
-											<FaEyeSlash className={loginStyles.hide_cta} />
-										) : (
-											<FaEye className={loginStyles.hide_cta} />
-										)}
-									</button>
-								</span>
+								</div>
+
+								<ErrorMessage name="email" className="form-error" />
 							</div>
-							<ErrorMessage name="password" className="form-error" />
-						</div>
 
-						{error && <div className={loginStyles.inpurt_error}>{error}</div>}
+							<div className={loginStyles.input_control}>
+								<label htmlFor="password" className={loginStyles.form_label}>
+									Password
+								</label>
+								<div className={loginStyles.input_field_container}>
+									<span
+										className={`${loginStyles.input_grid} ${loginStyles.width100}`}
+									>
+										<Field
+											name="password"
+											placeholder="Enter password"
+											className={loginStyles.input_pass_field}
+											type={isHidden ? "password" : "text"}
+										/>
+										<button
+											type="button"
+											className={loginStyles.input_pass_cta}
+											onClick={() => setIsHidden((isHidden) => !isHidden)}
+										>
+											{isHidden ? (
+												<FaEyeSlash className={loginStyles.hide_cta} />
+											) : (
+												<FaEye className={loginStyles.hide_cta} />
+											)}
+										</button>
+									</span>
+								</div>
+								<ErrorMessage name="password" className="form-error" />
+							</div>
 
-						<button type="submit" className={loginStyles.form_submit_cta}>
-							{isLoading ? "Logging In..." : "Login"}
-						</button>
+							{error && <div className={loginStyles.inpurt_error}>{error}</div>}
 
-						<p className={`${loginStyles.form_text} ${loginStyles.marginTop1}`}>
-							Not Registered yet?
-							<span>
-								<Link to="/signup" className={loginStyles.form_links}>
-									Sign up
-								</Link>
-							</span>
-						</p>
-					</Form>
+							<button type="submit" className={loginStyles.form_submit_cta}>
+								{isLoading ? "Logging In..." : "Login"}
+							</button>
+							<p
+								className={`${loginStyles.form_text} ${loginStyles.marginTop1}`}
+								onClick={() => {
+									props.setFieldValue("email", "tester@gmail.com");
+									props.setFieldValue("password", "P@ssw0rd");
+								}}
+							>
+								<span className={loginStyles.form_links}>
+									Fill Test Credentials
+								</span>
+							</p>
+
+							<p
+								className={`${loginStyles.form_text} ${loginStyles.marginTop1}`}
+							>
+								Not Registered yet?
+								<span>
+									<Link to="/signup" className={loginStyles.form_links}>
+										Sign up
+									</Link>
+								</span>
+							</p>
+						</Form>
+					)}
 				</Formik>
 			</div>
 		</div>
