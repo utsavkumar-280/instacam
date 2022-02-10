@@ -16,6 +16,7 @@ import {
 	clearError,
 	clearForm,
 } from "../utils";
+import { useAuth } from "../authentication/authSlice";
 
 export const Home = () => {
 	const [inputImg, setInputImg] = useState("");
@@ -23,6 +24,10 @@ export const Home = () => {
 	const [postImgFile, setPostImgFile] = useState(null);
 	const [delToken, setDelToken] = useState("");
 	const [isPosting, setIsPosting] = useState(false);
+
+	const {
+		authentication: { profilePic },
+	} = useAuth();
 
 	const dispatch = useDispatch();
 	const [formState, formDispatch] = useReducer(
@@ -140,7 +145,7 @@ export const Home = () => {
 				<section className={homeStyles.post_layout}>
 					<div className={homeStyles.user_pic_container}>
 						<img
-							src="https://i.postimg.cc/gJPZNW57/mini-passport-pic.jpg"
+							src={profilePic}
 							alt="post_user_pic"
 							className={homeStyles.user_pic}
 						/>
