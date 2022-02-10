@@ -133,7 +133,6 @@ export const Home = () => {
 		}
 	};
 
-	console.log({ inputImg, postImgPreview, postImgFile, delToken, formState });
 	return (
 		<div className={homeStyles.container}>
 			<header className={homeStyles.head_container}>
