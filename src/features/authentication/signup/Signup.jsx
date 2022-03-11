@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -18,6 +18,12 @@ export const Signup = () => {
 	const {
 		signUp: { status, error },
 	} = useAuth();
+
+	useEffect(() => {
+		return () => {
+			setIsLoading(false);
+		};
+	}, []);
 
 	const signup = async (values) => {
 		setIsLoading(true);

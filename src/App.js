@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, useLocation } from "react-router";
+import { Routes } from "react-router";
 import "./App.css";
 import { useDispatch } from "react-redux";
 import {
@@ -43,12 +43,16 @@ function App() {
 	}
 
 	useEffect(() => {
+		// console.log("axios error handler executed");
+		setAxiosErrorHandler(dispatch);
+	}, [token, dispatch]);
+
+	useEffect(() => {
 		if (token) {
 			dispatch(loadAllUsers());
 			dispatch(loadPosts());
 			dispatch(loadNotifications());
 		}
-		setAxiosErrorHandler(dispatch);
 	}, [token, dispatch]);
 
 	return (
