@@ -4,13 +4,27 @@
 	top: 0;
 	left: 0;
 	width: 100vw;
-	min-height: 100vh;
+	height: 100vh;
 	font-family: "Poppins", sans-serif;
 	background-color: var(--background-color);
 	color: var(--head-primary);
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	transition: all 0.25s ease;
+}
+
+.content {
+	width: 100vw;
+	height: 100vh;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	font-family: "Poppins", sans-serif;
+	background-color: var(--background-color);
+	color: var(--head-primary);
 	transition: all 0.25s ease;
 }
 
@@ -22,6 +36,18 @@
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
 	border-radius: 3rem;
+	margin: 20rem 0 0 0;
+	border: 0.1rem solid var(--line);
+}
+.content_card_alt {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem;
+	background-color: var(--background-color);
+	transition: all 0.25s ease;
+	border-radius: 3rem;
+	margin: auto;
 	border: 0.1rem solid var(--line);
 }
 .form_head {
@@ -238,11 +264,21 @@ select:-webkit-autofill:focus {
 		width: auto;
 		padding: 0 1rem 1rem 1rem;
 	}
+	.content_card {
+		margin: auto;
+	}
+	.content_card_alt {
+		margin: auto;
+	}
 }
 
 @media screen and (max-width: 880px) {
 	.content_card {
-		padding: 0 0.5rem;
+		padding: 0 0.75rem;
+		border: none;
+	}
+	.content_card_alt {
+		padding: 0 0.75rem;
 		border: none;
 	}
 	.input_control {
