@@ -17,12 +17,18 @@ export const loadFollowers = createAsyncThunk(
 
 export const followUsers = createAsyncThunk(
 	"profile/followUsers",
-	async ({ userName, posts = [], viewerDetails }) => {
+	async ({ userName, posts = [], viewerDetails, setFollowLoading }) => {
 		const {
 			data: { isAdded },
 		} = await axios.post(`${API_URL}/user-profiles/${userName}/followers`);
 
-		return { isAdded, posts, viewerDetails };
+		const {
+			data: { response },
+		} = await axios.get(`${API_URL}/user-profiles`);
+
+		setFollowLoading(false);
+
+		return { isAdded, posts, viewerDetails, usersList: response };
 	}
 );
 

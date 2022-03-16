@@ -156,6 +156,9 @@
 	padding: 0.5rem 1.5rem;
 	margin-right: 1rem;
 	transition: all 0.25s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .update_cta:hover {
 	background-color: var(--primary-hover);
@@ -225,6 +228,17 @@
 	font-size: 3rem;
 	color: var(--head-secondary);
 	transition: all 0.25s ease;
+}
+
+.loaderContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: center;
+}
+.loaderContainer div {
+	border: 3.5px solid var(--primary-loader-bg);
+	border-right-color: var(--primary-color);
 }
 
 @media screen and (max-width: 768px) {

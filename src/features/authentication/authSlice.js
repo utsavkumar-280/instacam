@@ -80,6 +80,7 @@ export const authSlice = createSlice({
 			error: "",
 		},
 		notifications: [],
+		notificationsStatus: "idle",
 	},
 	reducers: {},
 	extraReducers: {
@@ -125,9 +126,14 @@ export const authSlice = createSlice({
 
 		[loadNotifications.fulfilled]: (state, action) => {
 			state.notifications = action.payload;
+			state.notificationsStatus = "success";
+		},
+		[loadNotifications.pending]: (state, action) => {
+			state.notificationsStatus = "loading";
 		},
 		[loadNotifications.rejected]: (state, action) => {
 			console.log(action.error.message);
+			state.notificationsStatus = "failure";
 		},
 
 		[updateProfile.fulfilled]: (state, action) => {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { CircleSpinner } from "react-spinners-kit";
 import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -107,7 +108,14 @@ export const Login = () => {
 							{error && <div className={loginStyles.inpurt_error}>{error}</div>}
 
 							<button type="submit" className={loginStyles.form_submit_cta}>
-								{isLoading ? "Logging In..." : "Login"}
+								{isLoading ? (
+									<>
+										<p style={{ paddingRight: "1rem" }}>Logging in</p>
+										<CircleSpinner size={20} loading />
+									</>
+								) : (
+									"Login"
+								)}
 							</button>
 							<p
 								className={`${loginStyles.form_text} ${loginStyles.marginTop1}`}

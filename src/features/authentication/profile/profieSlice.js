@@ -82,11 +82,13 @@ const profileSlice = createSlice({
 	initialState: {
 		profileDetails: null,
 		postsDetails: [],
+		postsDetailsStatus: "idle",
 	},
 	reducers: {
 		resetUserProfile: (state, action) => {
 			state.profileDetails = null;
 			state.postsDetails = [];
+			state.postsDetailsStatus = "idle";
 		},
 	},
 	extraReducers: {
@@ -100,10 +102,15 @@ const profileSlice = createSlice({
 		[loadUserPosts.fulfilled]: (state, action) => {
 			if (action.payload) {
 				state.postsDetails = action.payload;
+				state.postsDetailsStatus = "success";
 			}
+		},
+		[loadUserPosts.pending]: (state, action) => {
+			state.postsDetailsStatus = "loading";
 		},
 		[loadUserPosts.rejected]: (state, action) => {
 			console.log(action.error.message);
+			state.postsDetailsStatus = "failure";
 		},
 
 		[updateProfile.fulfilled]: (state, action) => {

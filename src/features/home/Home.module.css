@@ -29,7 +29,7 @@
 
 .add_post {
 	position: sticky;
-	top: 6.5vh;
+	top: var(--head-height);
 	z-index: 1;
 	background-color: var(--background-color);
 	transition: all 0.25s ease;
@@ -38,14 +38,13 @@
 /* PostList */
 .postList {
 	background-color: var(--background-color);
-	transition: all 0.25s ease;
+	transition: background-color 0.25s ease;
 	display: flex;
 	flex-direction: column;
 }
 .post_layout {
 	display: grid;
 	grid-template-columns: 1fr 9fr;
-	transition: all 0.25s ease;
 }
 .likes {
 	font-size: 1.75rem;
@@ -68,7 +67,7 @@
 	height: 20px;
 	justify-content: flex-end;
 	align-items: flex-start;
-	transition: all 0.25s ease;
+	transition: color 0.25s ease;
 }
 .post_cta_icon_container:hover > .post_cta_icon {
 	color: var(--primary-color);
@@ -140,11 +139,19 @@
 	font-weight: 600;
 	letter-spacing: 0.03rem;
 	color: var(--head-primary);
+	text-decoration: none;
+	transition: all 0.25s ease;
+	display: flex;
+	align-items: center;
+}
+.post_head_name:hover {
+	color: var(--primary-color);
 	transition: all 0.25s ease;
 }
 .post_head > span {
 	font-size: 1.325rem;
 	font-weight: 500;
+	margin-left: 0.5rem;
 	color: var(--head-secondary);
 	transition: all 0.25s ease;
 }
@@ -344,7 +351,16 @@
 	color: white;
 	background-color: var(--primary-color);
 	transition: all 0.25s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
+
+.form_cta div {
+	border: 4px solid rgba(255, 255, 255, 0.322);
+	border-right-color: white;
+}
+
 .form_cta:hover {
 	background-color: var(--primary-cta-hover);
 	transition: all 0.25s ease;
@@ -434,6 +450,42 @@
 	font-size: 1.5rem;
 	font-weight: 500;
 	color: var(--head-secondary);
+}
+
+.loaderContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: center;
+	margin: 3rem;
+}
+.loaderContainer div {
+	border: 4.5px solid var(--primary-loader-bg);
+	border-right-color: var(--primary-color);
+}
+
+.noPostContainer {
+	display: flex;
+	flex-direction: column;
+	padding: 2.5rem;
+	background-color: var(--background-color);
+	transition: all 0.25s ease;
+}
+
+.noPost {
+	background-color: var(--background-card);
+	border-radius: 2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1.5rem 2rem;
+	text-decoration: none;
+	font-size: 1.7rem;
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--head-primary);
+
+	transition: all 0.25s ease;
 }
 @media screen and (max-width: 1024px) {
 	.head_container {

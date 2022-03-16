@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { CircleSpinner } from "react-spinners-kit";
 import { Outlet, useParams } from "react-router";
 import { NavLink, useLocation } from "react-router-dom";
 import { ImLink } from "react-icons/im";
@@ -19,6 +20,7 @@ import { locationTextFormatter, websiteTextFormatter } from "../../utils";
 
 export const Profile = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isFollwingLoading, setFollowLoading] = useState(false);
 
 	const { userName } = useParams();
 	const currentPath = useLocation().pathname;
@@ -48,7 +50,7 @@ export const Profile = () => {
 
 	return (
 		<div className={profileStyles.container}>
-			{profileDetails && (
+			{profileDetails ? (
 				<>
 					<header className={profileStyles.head_container}>
 						<h2 className={profileStyles.route_head}>{profileDetails?.name}</h2>
@@ -87,9 +89,11 @@ export const Profile = () => {
 								) : (
 									<>
 										<button
-											onClick={() =>
+											onClick={() => {
+												setFollowLoading(true);
 												dispatch(
 													followUsers({
+														setFollowLoading: setFollowLoading,
 														userName,
 														posts: postsDetails,
 														viewerDetails: {
@@ -98,12 +102,34 @@ export const Profile = () => {
 															viewerProfilePic,
 														},
 													})
-												)
-											}
+												);
+											}}
 										>
-											{profileDetails?.followedByViewer
-												? "Following"
-												: "Follow"}
+											{profileDetails?.followedByViewer ? (
+												isFollwingLoading ? (
+													<>
+														<p style={{ paddingRight: "1rem" }}>Following </p>
+														<section
+															className={profileStyles.smallLoaderContainer}
+														>
+															<CircleSpinner size={15} loading />
+														</section>
+													</>
+												) : (
+													"Following"
+												)
+											) : isFollwingLoading ? (
+												<>
+													<p style={{ paddingRight: "1rem" }}>Following </p>
+													<section
+														className={profileStyles.smallLoaderContainer}
+													>
+														<CircleSpinner size={15} loading />
+													</section>
+												</>
+											) : (
+												"Follow"
+											)}
 										</button>
 									</>
 								)}
@@ -195,6 +221,10 @@ export const Profile = () => {
 					<div className={profileStyles.home_end} />
 					{isModalOpen && <EditProfileModal setIsModalOpen={setIsModalOpen} />}
 				</>
+			) : (
+				<section className={profileStyles.loaderContainer}>
+					<CircleSpinner size={25} loading className={profileStyles.loader} />
+				</section>
 			)}
 		</div>
 	);

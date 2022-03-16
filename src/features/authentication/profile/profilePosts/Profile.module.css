@@ -1,6 +1,74 @@
 .postList {
 	background-color: var(--background-color);
-	transition: all 0.25s ease;
+	transition: background-color 0.25s ease;
 	display: flex;
 	flex-direction: column;
+}
+
+.loaderContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: center;
+	margin: 3rem;
+}
+.loaderContainer div {
+	border: 4.5px solid var(--primary-loader-bg);
+	border-right-color: var(--primary-color);
+}
+
+.users_info_alt {
+	padding: 0 0 0 1rem;
+	text-decoration: none;
+}
+.users_info_alt > h1 {
+	font-size: 1.7rem;
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--head-primary);
+	transition: all 0.25s ease;
+}
+.users_info_alt > h2 {
+	font-size: 1.325rem;
+	font-weight: 400;
+	text-decoration: none;
+	color: var(--head-secondary);
+	transition: all 0.25s ease;
+}
+
+.users_empty {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1.5rem 2rem;
+	border-bottom: 0.1rem solid var(--line);
+	transition: all 0.25s ease;
+	text-decoration: none;
+}
+.users_empty:hover {
+	background-color: var(--background-card-hover);
+	transition: all 0.25s ease;
+}
+.users_empty:first-child {
+	border-top-left-radius: 2rem;
+	border-top-right-radius: 2rem;
+}
+
+.users_empty:last-child {
+	border-bottom: 0.1rem solid transparent;
+	border-bottom-left-radius: 2rem;
+	border-bottom-right-radius: 2rem;
+}
+
+.users_list {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--background-card);
+	border-radius: 2rem;
+}
+
+.userList_section {
+	padding: 2.5rem;
+	background-color: var(--background-color);
+	transition: all 0.25s ease;
 }

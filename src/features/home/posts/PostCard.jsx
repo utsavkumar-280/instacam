@@ -11,6 +11,7 @@ import {
 import { openLikesModal } from "./postsSlice";
 import { useAuth } from "../../authentication/authSlice";
 import { useProfile } from "../../authentication/profile/profieSlice";
+import { Link } from "react-router-dom";
 
 export const PostCard = ({ deleteBtn, post, updatePr }) => {
 	const dispatch = useDispatch();
@@ -59,11 +60,16 @@ export const PostCard = ({ deleteBtn, post, updatePr }) => {
 					/>
 				</section>
 				<section className={homeStyles.post_box}>
-					<section className={homeStyles.post_head}>
-						{`${post?.userId?.userId?.firstname} ${post?.userId?.userId?.lastname}`}{" "}
+					<Link
+						to={`/user-profile/${post?.userId?.userName}`}
+						className={homeStyles.post_head}
+					>
+						<div className={homeStyles.post_head_name}>
+							{`${post?.userId?.userId?.firstname} ${post?.userId?.userId?.lastname}`}
+						</div>
 						<span>{`@${post?.userId?.userName}`}</span>{" "}
 						<span>{`. ${post?.time}`}</span>
-					</section>
+					</Link>
 					<section className={homeStyles.post_description}>
 						{post?.caption}
 					</section>

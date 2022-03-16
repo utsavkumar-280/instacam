@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { CircleSpinner } from "react-spinners-kit";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
@@ -219,7 +220,14 @@ export const Signup = () => {
 							)}
 
 							<button type="submit" className={signupStyles.form_submit_cta}>
-								{isLoading ? "Creating Account..." : "Create Account"}
+								{isLoading ? (
+									<>
+										<p style={{ paddingRight: "1rem" }}>Creating Account</p>
+										<CircleSpinner size={20} loading />
+									</>
+								) : (
+									"Create Account"
+								)}
 							</button>
 							<p
 								className={`${signupStyles.form_text} ${signupStyles.marginTop1}`}

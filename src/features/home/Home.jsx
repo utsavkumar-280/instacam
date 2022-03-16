@@ -1,6 +1,7 @@
 import { useState, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import { IoImageOutline } from "react-icons/io5";
+import { CircleSpinner } from "react-spinners-kit";
 import { XIcon } from "@heroicons/react/solid";
 
 import { CLOUDINARY_URL, CLOUDINARY_PRESET } from "../utils";
@@ -198,7 +199,14 @@ export const Home = () => {
 								className={homeStyles.form_cta}
 								onClick={createPostHandler}
 							>
-								{isPosting ? "Posting..." : "Post"}
+								{isPosting ? (
+									<>
+										<p style={{ paddingRight: "1rem" }}>Posting </p>
+										<CircleSpinner size={20} loading />
+									</>
+								) : (
+									"Post"
+								)}
 							</button>
 						</section>
 					</form>
