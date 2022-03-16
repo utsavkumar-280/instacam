@@ -84,6 +84,9 @@
 	letter-spacing: 0.02rem;
 	transition: all 0.25s ease;
 	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .profile_footer > button:hover {
@@ -185,6 +188,28 @@
 
 .home_end {
 	height: 10vh;
+}
+
+.loaderContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: stretch;
+	align-items: center;
+	margin: 3rem;
+}
+
+.loaderContainer div {
+	border: 4.5px solid var(--primary-loader-bg);
+	border-right-color: var(--primary-color);
+}
+
+.smallLoaderContainer {
+	display: flex;
+}
+
+.smallLoaderContainer div {
+	border: 3.5px solid var(--primary-loader-bg);
+	border-right-color: var(--primary-color);
 }
 
 @media screen and (max-width: 768px) {

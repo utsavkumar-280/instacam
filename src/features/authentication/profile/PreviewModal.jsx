@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { CircleSpinner } from "react-spinners-kit";
 
 import style from "./Modal.module.css";
 import { XIcon } from "@heroicons/react/solid";
@@ -14,6 +15,12 @@ const PreviewModal = ({
 	isPost,
 }) => {
 	const [isUploading, setIsUploading] = useState(false);
+
+	useEffect(() => {
+		return () => {
+			setIsUploading(false);
+		};
+	}, []);
 
 	return (
 		<div className={style.main_conatiner_alt}>
@@ -52,7 +59,16 @@ const PreviewModal = ({
 								}
 							}}
 						>
-							{isUploading ? "Uploading..." : "Upload"}
+							{isUploading ? (
+								<>
+									<div style={{ paddingRight: "1rem" }}>Uploading </div>
+									<section className={style.loaderContainer}>
+										<CircleSpinner size={15} loading />
+									</section>
+								</>
+							) : (
+								"Upload"
+							)}
 						</button>
 					</footer>
 				</section>

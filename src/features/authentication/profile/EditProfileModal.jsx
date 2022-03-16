@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { XIcon } from "@heroicons/react/solid";
 import { AiOutlineCamera } from "react-icons/ai";
+import { CircleSpinner } from "react-spinners-kit";
 import { useDispatch } from "react-redux";
 
 import style from "./Modal.module.css";
@@ -254,7 +255,16 @@ const EditProfileModal = ({ setIsModalOpen }) => {
 								updateHandler();
 							}}
 						>
-							{isUpdating ? "Updating..." : "Update"}
+							{isUpdating ? (
+								<>
+									<div style={{ paddingRight: "1rem" }}>Updating </div>
+									<section className={style.loaderContainer}>
+										<CircleSpinner size={15} loading />
+									</section>
+								</>
+							) : (
+								"Update"
+							)}
 						</button>
 						<button
 							className={style.cancel_cta}

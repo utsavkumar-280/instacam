@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import exploreStyles from "./Explore.module.css";
 import { FiSearch, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { CircleSpinner } from "react-spinners-kit";
 
 import UserTile from "./UserTile";
 import { useUsers } from "./usersSlice";
@@ -17,7 +18,16 @@ function shuffle(array) {
 
 export const Explore = () => {
 	const [inputSearch, setInputSearch] = useState("");
-	const { users } = useUsers();
+	const [restSuggested, setResetSuggested] = useState("");
+	const { users, usersLoadStatus } = useUsers();
+	const { pathname } = useLocation();
+
+	useEffect(() => {
+		setResetSuggested(pathname);
+		return () => {
+			setResetSuggested("");
+		};
+	}, [pathname]);
 	const {
 		authentication: { userName },
 	} = useAuth();
@@ -27,20 +37,23 @@ export const Explore = () => {
 			(user) => !user.followedByViewer && userName !== user.userName
 		);
 
-		nonFollowers = shuffle(nonFollowers);
-		if (nonFollowers.length > 4) {
+		// nonFollowers = shuffle(nonFollowers);
+		if (nonFollowers.length > 7) {
 			return [
-				nonFollowers[1],
 				nonFollowers[0],
-				nonFollowers[4],
-				nonFollowers[3],
+				nonFollowers[1],
 				nonFollowers[2],
+				nonFollowers[3],
+				nonFollowers[4],
+				nonFollowers[5],
+				nonFollowers[6],
 			];
 		}
 		return nonFollowers;
 	};
 
 	const suggestedUsers = followSuggestions(users);
+	console.log({ pathname }, { suggestedUsers });
 
 	const searchUsers = (users, searchKeyword) => {
 		const searchedUpper = searchKeyword.toUpperCase();
@@ -123,15 +136,21 @@ export const Explore = () => {
 							<p>Users you might like</p>
 						</header>
 						<section className={exploreStyles.users_list}>
-							{suggestedUsers.map((user) => (
-								<UserTile
-									key={user._id}
-									to={`/user-profile/${user?.userName}`}
-									pic={user?.profilePic}
-									name={user?.name}
-									username={user?.userName}
-								/>
-							))}
+							{usersLoadStatus === "success" ? (
+								suggestedUsers.map((user) => (
+									<UserTile
+										key={user._id}
+										to={`/user-profile/${user?.userName}`}
+										pic={user?.profilePic}
+										name={user?.name}
+										username={user?.userName}
+									/>
+								))
+							) : (
+								<section className={exploreStyles.loaderContainer}>
+									<CircleSpinner size={25} loading />
+								</section>
+							)}
 						</section>
 					</div>
 				)}
